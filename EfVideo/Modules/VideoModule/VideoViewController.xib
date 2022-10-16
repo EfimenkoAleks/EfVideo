@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController" customModule="EfVideo" customModuleProvider="target">
+            <connections>
+                <outlet property="backPlayButton" destination="07P-oL-bTc" id="Fwq-ly-bi9"/>
+                <outlet property="containerVideoView" destination="Fas-Hi-KPc" id="Td0-PG-WDB"/>
+                <outlet property="forwardPlayButton" destination="Xah-mO-3RG" id="Hy6-U2-Cvb"/>
+                <outlet property="muteButton" destination="ZSq-4W-Iqz" id="fxb-jx-Kt9"/>
+                <outlet property="playButton" destination="MFM-JL-OjQ" id="iWG-Dl-MtW"/>
+                <outlet property="progresView" destination="aak-T7-rpp" id="8zw-4o-VAg"/>
+                <outlet property="resizeButton" destination="nrE-O6-mPN" id="cQv-Hu-hlC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-qc-1T0">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fas-Hi-KPc">
+                            <rect key="frame" x="0.0" y="150" width="414" height="200"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="1h0-Kf-INk"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9z-jv-ZeY">
+                            <rect key="frame" x="0.0" y="688" width="414" height="80"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFM-JL-OjQ" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
+                                    <rect key="frame" x="187" y="20" width="40" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="JZh-Oy-9qx"/>
+                                        <constraint firstAttribute="width" constant="40" id="Zfo-jS-HWW"/>
+                                    </constraints>
+                                    <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tapPlayButton:" destination="-1" eventType="touchUpInside" id="zWm-ah-Ri7"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSq-4W-Iqz" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="20" width="40" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="0gr-8G-BSP"/>
+                                        <constraint firstAttribute="height" constant="40" id="n7I-8w-Myp"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="speaker.slash.fill" catalog="system">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tapMuteButton:" destination="-1" eventType="touchUpInside" id="FUd-tf-Kqs"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07P-oL-bTc" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
+                                    <rect key="frame" x="131" y="20" width="40" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="P3R-HQ-TND"/>
+                                        <constraint firstAttribute="height" constant="40" id="Pbg-ch-U0o"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="gobackward.15" catalog="system">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tapBackButton:" destination="-1" eventType="touchUpInside" id="1oy-2c-1Ub"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xah-mO-3RG" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
+                                    <rect key="frame" x="243" y="20" width="40" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Cxh-VB-Yc2"/>
+                                        <constraint firstAttribute="width" constant="40" id="Ity-TF-MpF"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="goforward.15" catalog="system">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tapForwardButton:" destination="-1" eventType="touchUpInside" id="SnQ-74-pb5"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrE-O6-mPN" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
+                                    <rect key="frame" x="358" y="20" width="40" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="EJL-eU-eiv"/>
+                                        <constraint firstAttribute="width" constant="40" id="aaY-Sc-Z7T"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.up.left.and.down.right.and.arrow.up.right.and.down.left" catalog="system">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tapResizeButton:" destination="-1" eventType="touchUpInside" id="80g-zc-KvM"/>
+                                    </connections>
+                                </button>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aak-T7-rpp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" systemColor="systemGray4Color"/>
+                                </progressView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="nrE-O6-mPN" secondAttribute="trailing" constant="16" id="59t-nd-ukD"/>
+                                <constraint firstItem="07P-oL-bTc" firstAttribute="centerY" secondItem="Y9z-jv-ZeY" secondAttribute="centerY" id="5Hc-kz-dj2"/>
+                                <constraint firstAttribute="trailing" secondItem="aak-T7-rpp" secondAttribute="trailing" id="8D2-l8-pXi"/>
+                                <constraint firstItem="ZSq-4W-Iqz" firstAttribute="centerY" secondItem="Y9z-jv-ZeY" secondAttribute="centerY" id="8Ni-uT-qdR"/>
+                                <constraint firstItem="Xah-mO-3RG" firstAttribute="centerY" secondItem="Y9z-jv-ZeY" secondAttribute="centerY" id="8Yj-TG-FhJ"/>
+                                <constraint firstItem="ZSq-4W-Iqz" firstAttribute="leading" secondItem="Y9z-jv-ZeY" secondAttribute="leading" constant="16" id="9QU-ZE-b3p"/>
+                                <constraint firstItem="MFM-JL-OjQ" firstAttribute="leading" secondItem="07P-oL-bTc" secondAttribute="trailing" constant="16" id="GZv-rO-nRh"/>
+                                <constraint firstItem="MFM-JL-OjQ" firstAttribute="centerX" secondItem="Y9z-jv-ZeY" secondAttribute="centerX" id="HsL-gE-BcT"/>
+                                <constraint firstAttribute="height" constant="80" id="YEb-eV-CpT"/>
+                                <constraint firstItem="Xah-mO-3RG" firstAttribute="leading" secondItem="MFM-JL-OjQ" secondAttribute="trailing" constant="16" id="YTw-f7-7K5"/>
+                                <constraint firstItem="MFM-JL-OjQ" firstAttribute="centerY" secondItem="Y9z-jv-ZeY" secondAttribute="centerY" id="Z2N-Pb-ZqV"/>
+                                <constraint firstItem="nrE-O6-mPN" firstAttribute="centerY" secondItem="Y9z-jv-ZeY" secondAttribute="centerY" id="cQ5-0D-JHo"/>
+                                <constraint firstItem="aak-T7-rpp" firstAttribute="leading" secondItem="Y9z-jv-ZeY" secondAttribute="leading" id="ob4-pQ-gVi"/>
+                                <constraint firstItem="aak-T7-rpp" firstAttribute="top" secondItem="Y9z-jv-ZeY" secondAttribute="top" id="sAV-lK-W97"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Y9z-jv-ZeY" firstAttribute="leading" secondItem="NaQ-qc-1T0" secondAttribute="leading" id="4AE-k0-9b2"/>
+                        <constraint firstItem="Fas-Hi-KPc" firstAttribute="leading" secondItem="NaQ-qc-1T0" secondAttribute="leading" id="Atv-lM-Tqw"/>
+                        <constraint firstAttribute="trailing" secondItem="Fas-Hi-KPc" secondAttribute="trailing" id="IaX-Ke-u6t"/>
+                        <constraint firstAttribute="trailing" secondItem="Y9z-jv-ZeY" secondAttribute="trailing" id="cQr-NY-AK0"/>
+                        <constraint firstAttribute="bottom" secondItem="Y9z-jv-ZeY" secondAttribute="bottom" constant="50" id="hIW-Fy-IkQ"/>
+                        <constraint firstItem="Fas-Hi-KPc" firstAttribute="top" secondItem="NaQ-qc-1T0" secondAttribute="top" constant="150" id="vuq-W2-PzI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NaQ-qc-1T0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UxU-6u-Ic1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NaQ-qc-1T0" secondAttribute="bottom" id="WVw-aR-Hxi"/>
+                <constraint firstItem="NaQ-qc-1T0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aZM-6h-8Av"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NaQ-qc-1T0" secondAttribute="trailing" id="cce-7Q-0PV"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="114"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="07P-oL-bTc">
+            <size key="intrinsicContentSize" width="45" height="31"/>
+        </designable>
+        <designable name="MFM-JL-OjQ">
+            <size key="intrinsicContentSize" width="40" height="31"/>
+        </designable>
+        <designable name="Xah-mO-3RG">
+            <size key="intrinsicContentSize" width="45" height="31"/>
+        </designable>
+        <designable name="ZSq-4W-Iqz">
+            <size key="intrinsicContentSize" width="42" height="31"/>
+        </designable>
+        <designable name="nrE-O6-mPN">
+            <size key="intrinsicContentSize" width="46" height="31"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="arrow.up.left.and.down.right.and.arrow.up.right.and.down.left" catalog="system" width="128" height="115"/>
+        <image name="gobackward.15" catalog="system" width="121" height="128"/>
+        <image name="goforward.15" catalog="system" width="121" height="128"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="speaker.slash.fill" catalog="system" width="124" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

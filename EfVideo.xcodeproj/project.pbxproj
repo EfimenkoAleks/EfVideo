@@ -10,13 +10,16 @@
 		CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CB828F9611800EA1B60 /* AppDelegate.swift */; };
 		CEE09CBB28F9611800EA1B60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */; };
 		CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBC28F9611800EA1B60 /* ViewController.swift */; };
-		CEE09CC028F9611800EA1B60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE09CBE28F9611800EA1B60 /* Main.storyboard */; };
 		CEE09CC328F9611800EA1B60 /* EfVideo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CC128F9611800EA1B60 /* EfVideo.xcdatamodeld */; };
 		CEE09CC528F9611D00EA1B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE09CC428F9611D00EA1B60 /* Assets.xcassets */; };
 		CEE09CC828F9611D00EA1B60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE09CC628F9611D00EA1B60 /* LaunchScreen.storyboard */; };
 		CEE09CD328F9611D00EA1B60 /* EfVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CD228F9611D00EA1B60 /* EfVideoTests.swift */; };
 		CEE09CDD28F9611D00EA1B60 /* EfVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CDC28F9611D00EA1B60 /* EfVideoUITests.swift */; };
 		CEE09CDF28F9611D00EA1B60 /* EfVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CDE28F9611D00EA1B60 /* EfVideoUITestsLaunchTests.swift */; };
+		CEE09CEF28F9CA9100EA1B60 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CED28F9CA9100EA1B60 /* VideoViewController.swift */; };
+		CEE09CF028F9CA9100EA1B60 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE09CEE28F9CA9100EA1B60 /* VideoViewController.xib */; };
+		CEE09CF228FB173000EA1B60 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CF128FB173000EA1B60 /* BaseViewController.swift */; };
+		CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,6 @@
 		CEE09CB828F9611800EA1B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CEE09CBC28F9611800EA1B60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CEE09CBF28F9611800EA1B60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEE09CC228F9611800EA1B60 /* EfVideo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EfVideo.xcdatamodel; sourceTree = "<group>"; };
 		CEE09CC428F9611D00EA1B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEE09CC728F9611D00EA1B60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,10 @@
 		CEE09CD828F9611D00EA1B60 /* EfVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EfVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE09CDC28F9611D00EA1B60 /* EfVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfVideoUITests.swift; sourceTree = "<group>"; };
 		CEE09CDE28F9611D00EA1B60 /* EfVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEE09CED28F9CA9100EA1B60 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		CEE09CEE28F9CA9100EA1B60 /* VideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
+		CEE09CF128FB173000EA1B60 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +107,16 @@
 		CEE09CB728F9611800EA1B60 /* EfVideo */ = {
 			isa = PBXGroup;
 			children = (
+				CEE09CF328FC091900EA1B60 /* Models */,
+				CEE09CEB28F9C94400EA1B60 /* Modules */,
 				CEE09CB828F9611800EA1B60 /* AppDelegate.swift */,
 				CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */,
 				CEE09CBC28F9611800EA1B60 /* ViewController.swift */,
-				CEE09CBE28F9611800EA1B60 /* Main.storyboard */,
 				CEE09CC428F9611D00EA1B60 /* Assets.xcassets */,
 				CEE09CC628F9611D00EA1B60 /* LaunchScreen.storyboard */,
 				CEE09CC928F9611D00EA1B60 /* Info.plist */,
 				CEE09CC128F9611800EA1B60 /* EfVideo.xcdatamodeld */,
+				CEE09CF128FB173000EA1B60 /* BaseViewController.swift */,
 			);
 			path = EfVideo;
 			sourceTree = "<group>";
@@ -128,6 +136,31 @@
 				CEE09CDE28F9611D00EA1B60 /* EfVideoUITestsLaunchTests.swift */,
 			);
 			path = EfVideoUITests;
+			sourceTree = "<group>";
+		};
+		CEE09CEB28F9C94400EA1B60 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09CEC28F9C9DD00EA1B60 /* VideoModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CEE09CEC28F9C9DD00EA1B60 /* VideoModule */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09CED28F9CA9100EA1B60 /* VideoViewController.swift */,
+				CEE09CEE28F9CA9100EA1B60 /* VideoViewController.xib */,
+			);
+			path = VideoModule;
+			sourceTree = "<group>";
+		};
+		CEE09CF328FC091900EA1B60 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +269,7 @@
 			files = (
 				CEE09CC828F9611D00EA1B60 /* LaunchScreen.storyboard in Resources */,
 				CEE09CC528F9611D00EA1B60 /* Assets.xcassets in Resources */,
-				CEE09CC028F9611800EA1B60 /* Main.storyboard in Resources */,
+				CEE09CF028F9CA9100EA1B60 /* VideoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +296,11 @@
 			files = (
 				CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */,
 				CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */,
+				CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */,
 				CEE09CC328F9611800EA1B60 /* EfVideo.xcdatamodeld in Sources */,
+				CEE09CEF28F9CA9100EA1B60 /* VideoViewController.swift in Sources */,
 				CEE09CBB28F9611800EA1B60 /* SceneDelegate.swift in Sources */,
+				CEE09CF228FB173000EA1B60 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +337,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CEE09CBE28F9611800EA1B60 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEE09CBF28F9611800EA1B60 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CEE09CC628F9611D00EA1B60 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,9 +474,9 @@
 				INFOPLIST_FILE = EfVideo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +486,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -474,9 +502,9 @@
 				INFOPLIST_FILE = EfVideo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +514,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
