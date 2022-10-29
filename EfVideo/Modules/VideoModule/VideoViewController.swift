@@ -49,7 +49,7 @@ class VideoViewController: BaseViewController {
         
         configureUI()
         //5. Play Video
-        setPlayButton()
+ //       setPlayButton()
         observTrack()
         
         NotificationCenter.default.addObserver(self, selector: #selector(playerEndedPlaying), name: Notification.Name("AVPlayerItemDidPlayToEndTimeNotification"), object: nil)

@@ -7,9 +7,10 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, Coordinating {
 
     let activityView: UIActivityIndicatorView
+    var coordinator: Coordinator?
     
     init() {
         activityView = UIActivityIndicatorView(style: .large)

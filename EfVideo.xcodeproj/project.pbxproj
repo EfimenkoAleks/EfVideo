@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15812902EAA70099FA89 /* ListViewController.swift */; };
+		CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1C15822902EAA70099FA89 /* ListViewController.xib */; };
+		CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15852902F02B0099FA89 /* ListCoordinator.swift */; };
+		CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67D829057C360051AA9C /* ListTableViewManager.swift */; };
+		CECE67DC290585500051AA9C /* ConstantId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DB290585500051AA9C /* ConstantId.swift */; };
+		CECE67DE2905861C0051AA9C /* TableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */; };
+		CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67E0290586620051AA9C /* ListVideoCell.swift */; };
+		CECE67E3290586620051AA9C /* ListVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECE67E1290586620051AA9C /* ListVideoCell.xib */; };
+		CECE67E7290592470051AA9C /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67E6290592470051AA9C /* ListViewModel.swift */; };
+		CECE67E9290595000051AA9C /* ListInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67E8290595000051AA9C /* ListInterfaces.swift */; };
+		CECE67EE29059B920051AA9C /* ListApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67ED29059B920051AA9C /* ListApiProtocol.swift */; };
+		CECE67F029059BE90051AA9C /* ListApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67EF29059BE90051AA9C /* ListApiImpl.swift */; };
+		CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F129059E090051AA9C /* FechrsContainer.swift */; };
+		CECE67F52905A12F0051AA9C /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F42905A12F0051AA9C /* ListModel.swift */; };
+		CECE67F72905A8170051AA9C /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F62905A8170051AA9C /* Data+Extension.swift */; };
+		CECE67F92905B9A80051AA9C /* NetWorkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F82905B9A80051AA9C /* NetWorkError.swift */; };
+		CECE67FD2905C8070051AA9C /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67FC2905C8070051AA9C /* ListWireframe.swift */; };
+		CECE67FF2905C87F0051AA9C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67FE2905C87F0051AA9C /* DIContainer.swift */; };
+		CECE68012905CDDA0051AA9C /* mock_file.json in Sources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
+		CECE68022905D91F0051AA9C /* mock_file.json in Resources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
 		CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CB828F9611800EA1B60 /* AppDelegate.swift */; };
 		CEE09CBB28F9611800EA1B60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */; };
 		CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBC28F9611800EA1B60 /* ViewController.swift */; };
@@ -20,6 +40,12 @@
 		CEE09CF028F9CA9100EA1B60 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE09CEE28F9CA9100EA1B60 /* VideoViewController.xib */; };
 		CEE09CF228FB173000EA1B60 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CF128FB173000EA1B60 /* BaseViewController.swift */; };
 		CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */; };
+		CEE09CF928FC5F4B00EA1B60 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CF828FC5F4B00EA1B60 /* AppManager.swift */; };
+		CEE09CFB28FC62DB00EA1B60 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CFA28FC62DB00EA1B60 /* AppFlowController.swift */; };
+		CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CFD28FC63EC00EA1B60 /* TabBarItem.swift */; };
+		CEE09D0028FC645C00EA1B60 /* TabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CFF28FC645C00EA1B60 /* TabBar+Extension.swift */; };
+		CEE09D0228FC749000EA1B60 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09D0128FC749000EA1B60 /* Coordinator.swift */; };
+		CEE09D0528FC766B00EA1B60 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09D0428FC766B00EA1B60 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +66,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE1C15812902EAA70099FA89 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		CE1C15822902EAA70099FA89 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		CE1C15852902F02B0099FA89 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		CECE67D829057C360051AA9C /* ListTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewManager.swift; sourceTree = "<group>"; };
+		CECE67DB290585500051AA9C /* ConstantId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantId.swift; sourceTree = "<group>"; };
+		CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CECE67E0290586620051AA9C /* ListVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVideoCell.swift; sourceTree = "<group>"; };
+		CECE67E1290586620051AA9C /* ListVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListVideoCell.xib; sourceTree = "<group>"; };
+		CECE67E6290592470051AA9C /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		CECE67E8290595000051AA9C /* ListInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInterfaces.swift; sourceTree = "<group>"; };
+		CECE67ED29059B920051AA9C /* ListApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApiProtocol.swift; sourceTree = "<group>"; };
+		CECE67EF29059BE90051AA9C /* ListApiImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApiImpl.swift; sourceTree = "<group>"; };
+		CECE67F129059E090051AA9C /* FechrsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechrsContainer.swift; sourceTree = "<group>"; };
+		CECE67F42905A12F0051AA9C /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		CECE67F62905A8170051AA9C /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		CECE67F82905B9A80051AA9C /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
+		CECE67FC2905C8070051AA9C /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
+		CECE67FE2905C87F0051AA9C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		CECE68002905CDDA0051AA9C /* mock_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_file.json; sourceTree = "<group>"; };
 		CEE09CB528F9611800EA1B60 /* EfVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EfVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE09CB828F9611800EA1B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +102,12 @@
 		CEE09CEE28F9CA9100EA1B60 /* VideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 		CEE09CF128FB173000EA1B60 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
+		CEE09CF828FC5F4B00EA1B60 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		CEE09CFA28FC62DB00EA1B60 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		CEE09CFD28FC63EC00EA1B60 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		CEE09CFF28FC645C00EA1B60 /* TabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar+Extension.swift"; sourceTree = "<group>"; };
+		CEE09D0128FC749000EA1B60 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CEE09D0428FC766B00EA1B60 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +135,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE1C15802902EA7B0099FA89 /* ListModule */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67DF2905862C0051AA9C /* Cell */,
+				CE1C15812902EAA70099FA89 /* ListViewController.swift */,
+				CECE67E6290592470051AA9C /* ListViewModel.swift */,
+				CE1C15822902EAA70099FA89 /* ListViewController.xib */,
+				CECE67D829057C360051AA9C /* ListTableViewManager.swift */,
+				CECE67E8290595000051AA9C /* ListInterfaces.swift */,
+				CECE67FC2905C8070051AA9C /* ListWireframe.swift */,
+			);
+			path = ListModule;
+			sourceTree = "<group>";
+		};
+		CECE67DA290585150051AA9C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67DB290585500051AA9C /* ConstantId.swift */,
+				CECE68002905CDDA0051AA9C /* mock_file.json */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		CECE67DF2905862C0051AA9C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67E0290586620051AA9C /* ListVideoCell.swift */,
+				CECE67E1290586620051AA9C /* ListVideoCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CECE67EA29059A760051AA9C /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67EC29059B3A0051AA9C /* ServicesImpl */,
+				CECE67EB29059B1D0051AA9C /* ServicesProtocol */,
+				CECE67F129059E090051AA9C /* FechrsContainer.swift */,
+				CECE67F82905B9A80051AA9C /* NetWorkError.swift */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		CECE67EB29059B1D0051AA9C /* ServicesProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67ED29059B920051AA9C /* ListApiProtocol.swift */,
+			);
+			path = ServicesProtocol;
+			sourceTree = "<group>";
+		};
+		CECE67EC29059B3A0051AA9C /* ServicesImpl */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67EF29059BE90051AA9C /* ListApiImpl.swift */,
+			);
+			path = ServicesImpl;
+			sourceTree = "<group>";
+		};
+		CECE67F32905A0FF0051AA9C /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67F42905A12F0051AA9C /* ListModel.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
 		CEE09CAC28F9611800EA1B60 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +225,9 @@
 		CEE09CB728F9611800EA1B60 /* EfVideo */ = {
 			isa = PBXGroup;
 			children = (
+				CECE67DA290585150051AA9C /* Constants */,
+				CEE09CFC28FC63B700EA1B60 /* Extension */,
+				CEE09CF628FC5E9D00EA1B60 /* Services */,
 				CEE09CF328FC091900EA1B60 /* Models */,
 				CEE09CEB28F9C94400EA1B60 /* Modules */,
 				CEE09CB828F9611800EA1B60 /* AppDelegate.swift */,
@@ -141,6 +262,7 @@
 		CEE09CEB28F9C94400EA1B60 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE1C15802902EA7B0099FA89 /* ListModule */,
 				CEE09CEC28F9C9DD00EA1B60 /* VideoModule */,
 			);
 			path = Modules;
@@ -161,6 +283,48 @@
 				CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CEE09CF628FC5E9D00EA1B60 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CECE67F32905A0FF0051AA9C /* ResponseModel */,
+				CECE67EA29059A760051AA9C /* APIServices */,
+				CEE09CF728FC5EAA00EA1B60 /* AppManager */,
+				CEE09CFA28FC62DB00EA1B60 /* AppFlowController.swift */,
+				CEE09D0328FC75FA00EA1B60 /* Coordinator */,
+				CECE67FE2905C87F0051AA9C /* DIContainer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEE09CF728FC5EAA00EA1B60 /* AppManager */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09CF828FC5F4B00EA1B60 /* AppManager.swift */,
+			);
+			path = AppManager;
+			sourceTree = "<group>";
+		};
+		CEE09CFC28FC63B700EA1B60 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09CFD28FC63EC00EA1B60 /* TabBarItem.swift */,
+				CEE09CFF28FC645C00EA1B60 /* TabBar+Extension.swift */,
+				CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */,
+				CECE67F62905A8170051AA9C /* Data+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CEE09D0328FC75FA00EA1B60 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CEE09D0128FC749000EA1B60 /* Coordinator.swift */,
+				CEE09D0428FC766B00EA1B60 /* MainCoordinator.swift */,
+				CE1C15852902F02B0099FA89 /* ListCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,8 +431,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECE68022905D91F0051AA9C /* mock_file.json in Resources */,
 				CEE09CC828F9611D00EA1B60 /* LaunchScreen.storyboard in Resources */,
+				CECE67E3290586620051AA9C /* ListVideoCell.xib in Resources */,
 				CEE09CC528F9611D00EA1B60 /* Assets.xcassets in Resources */,
+				CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */,
 				CEE09CF028F9CA9100EA1B60 /* VideoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,12 +462,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */,
+				CECE67E7290592470051AA9C /* ListViewModel.swift in Sources */,
+				CECE67FD2905C8070051AA9C /* ListWireframe.swift in Sources */,
 				CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */,
+				CECE67F029059BE90051AA9C /* ListApiImpl.swift in Sources */,
+				CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */,
+				CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */,
+				CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */,
 				CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */,
+				CEE09CFB28FC62DB00EA1B60 /* AppFlowController.swift in Sources */,
 				CEE09CC328F9611800EA1B60 /* EfVideo.xcdatamodeld in Sources */,
+				CECE67DC290585500051AA9C /* ConstantId.swift in Sources */,
+				CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */,
 				CEE09CEF28F9CA9100EA1B60 /* VideoViewController.swift in Sources */,
+				CECE68012905CDDA0051AA9C /* mock_file.json in Sources */,
+				CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */,
 				CEE09CBB28F9611800EA1B60 /* SceneDelegate.swift in Sources */,
+				CEE09D0228FC749000EA1B60 /* Coordinator.swift in Sources */,
+				CECE67E9290595000051AA9C /* ListInterfaces.swift in Sources */,
 				CEE09CF228FB173000EA1B60 /* BaseViewController.swift in Sources */,
+				CECE67EE29059B920051AA9C /* ListApiProtocol.swift in Sources */,
+				CEE09D0528FC766B00EA1B60 /* MainCoordinator.swift in Sources */,
+				CECE67FF2905C87F0051AA9C /* DIContainer.swift in Sources */,
+				CECE67F92905B9A80051AA9C /* NetWorkError.swift in Sources */,
+				CEE09CF928FC5F4B00EA1B60 /* AppManager.swift in Sources */,
+				CECE67DE2905861C0051AA9C /* TableViewCell+Extension.swift in Sources */,
+				CECE67F52905A12F0051AA9C /* ListModel.swift in Sources */,
+				CEE09D0028FC645C00EA1B60 /* TabBar+Extension.swift in Sources */,
+				CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */,
+				CECE67F72905A8170051AA9C /* Data+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

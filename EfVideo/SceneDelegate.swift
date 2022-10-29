@@ -17,11 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
           
             let window = UIWindow(windowScene: windowScene)
-        let view = VideoViewController()
-        let navigate = UINavigationController(rootViewController: view)
-            window.rootViewController = navigate
-            window.makeKeyAndVisible()
-            self.window = window
+//        let view = VideoViewController()
+//        let navigate = UINavigationController(rootViewController: view)
+//            window.rootViewController = navigate
+//            window.makeKeyAndVisible()
+//            self.window = window
+        
+        AppManager.shared.updateRootVC(window)
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
