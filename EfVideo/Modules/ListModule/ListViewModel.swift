@@ -6,35 +6,45 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import AVFoundation
 
 class ListViewModel {
     
-    weak var delegate: ListViewModelDelegate?
     private var fetcher: ListApiProtocol
-    private var data: [VideoModel] = []
+    private var _dataList: BehaviorSubject<[VideoModel]> = BehaviorSubject<[VideoModel]>(value: [])
+    private var _loading: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: true)
     
-    init(fetcher: ListApiProtocol) {
+    init(fetcher: ListApiProtocol = DIContainer.default.listService) {
         self.fetcher = fetcher
         
         fechData()
     }
     
     private func fechData() {
-        fetcher.getListVideo { [weak self] result in
-            switch result {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+            self._loading.onNext(false)
+            fetcher.getListVideo { result in
+                switch result {
                 case .success(let model):
-                self?.data = model.categories.first?.videos ?? []
-                self?.delegate?.didFetchingData()
+                    let albums = model.categories.first?.videos ?? []
+                    self._dataList.onNext(albums)
                 case .failure(let error):
+                    self._dataList.onNext([])
                     print(error.localizedDescription)
                 }
+            }
         }
     }
 }
 
-extension ListViewModel: ListViewModelProtocol {
+extension ListViewModel: ListViewModelOutputProtocol {
+    var dataList: Driver<[VideoModel]> {
+        return _dataList.asDriver(onErrorJustReturn: [])
+    }
     
-    func models() -> [VideoModel] {
-        return data
+    var loading: Observable<Bool> {
+        return _loading.asObservable()
     }
 }

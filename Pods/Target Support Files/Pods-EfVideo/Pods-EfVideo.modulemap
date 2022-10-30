@@ -1,0 +1,6 @@
+framework module Pods_EfVideo {
+  umbrella header "Pods-EfVideo-umbrella.h"
+
+  export *
+  module * { export * }
+}
