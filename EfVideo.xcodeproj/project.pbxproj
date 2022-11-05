@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47D2499EF803445B3764C647 /* Pods_EfVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BBB8F1F85AB018C02FC245 /* Pods_EfVideo.framework */; };
 		CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15812902EAA70099FA89 /* ListViewController.swift */; };
 		CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1C15822902EAA70099FA89 /* ListViewController.xib */; };
 		CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15852902F02B0099FA89 /* ListCoordinator.swift */; };
+		CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */; };
+		CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B3290D8C0500CB37EF /* ListHelper.swift */; };
 		CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67D829057C360051AA9C /* ListTableViewManager.swift */; };
 		CECE67DC290585500051AA9C /* ConstantId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DB290585500051AA9C /* ConstantId.swift */; };
 		CECE67DE2905861C0051AA9C /* TableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */; };
@@ -23,7 +26,6 @@
 		CECE67F52905A12F0051AA9C /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F42905A12F0051AA9C /* ListModel.swift */; };
 		CECE67F72905A8170051AA9C /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F62905A8170051AA9C /* Data+Extension.swift */; };
 		CECE67F92905B9A80051AA9C /* NetWorkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F82905B9A80051AA9C /* NetWorkError.swift */; };
-		CECE67FD2905C8070051AA9C /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67FC2905C8070051AA9C /* ListWireframe.swift */; };
 		CECE67FF2905C87F0051AA9C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67FE2905C87F0051AA9C /* DIContainer.swift */; };
 		CECE68012905CDDA0051AA9C /* mock_file.json in Sources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
 		CECE68022905D91F0051AA9C /* mock_file.json in Resources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
@@ -66,9 +68,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DDEFE68044274741923BEAC /* Pods-EfVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EfVideo.release.xcconfig"; path = "Target Support Files/Pods-EfVideo/Pods-EfVideo.release.xcconfig"; sourceTree = "<group>"; };
+		4F8830D31F74176D23AF1B41 /* Pods-EfVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EfVideo.debug.xcconfig"; path = "Target Support Files/Pods-EfVideo/Pods-EfVideo.debug.xcconfig"; sourceTree = "<group>"; };
+		70BBB8F1F85AB018C02FC245 /* Pods_EfVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EfVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C15812902EAA70099FA89 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CE1C15822902EAA70099FA89 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		CE1C15852902F02B0099FA89 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
+		CEB810B3290D8C0500CB37EF /* ListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHelper.swift; sourceTree = "<group>"; };
 		CECE67D829057C360051AA9C /* ListTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewManager.swift; sourceTree = "<group>"; };
 		CECE67DB290585500051AA9C /* ConstantId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantId.swift; sourceTree = "<group>"; };
 		CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -82,7 +89,6 @@
 		CECE67F42905A12F0051AA9C /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		CECE67F62905A8170051AA9C /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		CECE67F82905B9A80051AA9C /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
-		CECE67FC2905C8070051AA9C /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
 		CECE67FE2905C87F0051AA9C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		CECE68002905CDDA0051AA9C /* mock_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_file.json; sourceTree = "<group>"; };
 		CEE09CB528F9611800EA1B60 /* EfVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EfVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47D2499EF803445B3764C647 /* Pods_EfVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +142,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7AE0030AD264BBB6C5DDBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F8830D31F74176D23AF1B41 /* Pods-EfVideo.debug.xcconfig */,
+				4DDEFE68044274741923BEAC /* Pods-EfVideo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3A1D93D1B889FFF7C3207648 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70BBB8F1F85AB018C02FC245 /* Pods_EfVideo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE1C15802902EA7B0099FA89 /* ListModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +168,7 @@
 				CE1C15822902EAA70099FA89 /* ListViewController.xib */,
 				CECE67D829057C360051AA9C /* ListTableViewManager.swift */,
 				CECE67E8290595000051AA9C /* ListInterfaces.swift */,
-				CECE67FC2905C8070051AA9C /* ListWireframe.swift */,
+				CEB810B3290D8C0500CB37EF /* ListHelper.swift */,
 			);
 			path = ListModule;
 			sourceTree = "<group>";
@@ -209,6 +233,8 @@
 				CEE09CD128F9611D00EA1B60 /* EfVideoTests */,
 				CEE09CDB28F9611D00EA1B60 /* EfVideoUITests */,
 				CEE09CB628F9611800EA1B60 /* Products */,
+				1F7AE0030AD264BBB6C5DDBC /* Pods */,
+				3A1D93D1B889FFF7C3207648 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,6 +339,7 @@
 				CEE09CFF28FC645C00EA1B60 /* TabBar+Extension.swift */,
 				CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */,
 				CECE67F62905A8170051AA9C /* Data+Extension.swift */,
+				CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -334,9 +361,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEE09CE228F9611D00EA1B60 /* Build configuration list for PBXNativeTarget "EfVideo" */;
 			buildPhases = (
+				EC5677ED453BCA3474271A95 /* [CP] Check Pods Manifest.lock */,
 				CEE09CB128F9611800EA1B60 /* Sources */,
 				CEE09CB228F9611800EA1B60 /* Frameworks */,
 				CEE09CB328F9611800EA1B60 /* Resources */,
+				63252F1DEE9B7BAD9AC4CBAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -456,6 +485,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63252F1DEE9B7BAD9AC4CBAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EfVideo/Pods-EfVideo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EfVideo/Pods-EfVideo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EfVideo/Pods-EfVideo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC5677ED453BCA3474271A95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EfVideo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CEE09CB128F9611800EA1B60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -463,11 +534,12 @@
 			files = (
 				CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */,
 				CECE67E7290592470051AA9C /* ListViewModel.swift in Sources */,
-				CECE67FD2905C8070051AA9C /* ListWireframe.swift in Sources */,
 				CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */,
 				CECE67F029059BE90051AA9C /* ListApiImpl.swift in Sources */,
 				CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */,
 				CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */,
+				CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */,
+				CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */,
 				CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */,
 				CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */,
 				CEE09CFB28FC62DB00EA1B60 /* AppFlowController.swift in Sources */,
@@ -654,6 +726,7 @@
 		};
 		CEE09CE328F9611D00EA1B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F8830D31F74176D23AF1B41 /* Pods-EfVideo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -682,6 +755,7 @@
 		};
 		CEE09CE428F9611D00EA1B60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DDEFE68044274741923BEAC /* Pods-EfVideo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class BaseViewController: UIViewController, Coordinating {
 
     let activityView: UIActivityIndicatorView
     var coordinator: Coordinator?
+    var disposeBag: DisposeBag = DisposeBag()
     
     init() {
         activityView = UIActivityIndicatorView(style: .large)
+        activityView.tintColor = UIColor.black
         super.init(nibName: nil, bundle: nil)
         
         activityView.center = self.view.center

@@ -21,8 +21,9 @@ class ListCoordinator: Coordinator {
     }
     
     func start() {
-        let listModule = ListWireframe().createModule(coordinator: self)
-        navigationController?.setViewControllers([listModule.view], animated: false)
+        var vc: UIViewController & Coordinating = ListViewController()
+        vc.coordinator = self
+        navigationController?.setViewControllers([vc], animated: false)
     }
 }
 

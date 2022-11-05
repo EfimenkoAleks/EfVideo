@@ -6,57 +6,47 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ListViewController: BaseViewController {
     
-    var viewModel: ListViewModelProtocol!
     @IBOutlet private weak var blueView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     
     private var tableViewManager: ListTableViewManager?
+    private var helper: ListHelper = ListHelper()
+    
+    lazy var viewModel: ListViewModelOutputProtocol = {
+        let viewModel = ListViewModel()
+        return viewModel
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
-        complexShape()
         setupUI()
-    }
-    
-    private func complexShape() {
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        let constWidth = UIScreen.main.bounds.size.width
-        let constHeight = blueView.frame.size.height
-        
-        path.addLine(to: CGPoint(x: constWidth, y: 0.0))
-        path.addLine(to: CGPoint(x: constWidth, y: constHeight - 60))
-        path.addQuadCurve(to: CGPoint(x: constWidth - 30, y: constHeight - 30), controlPoint: CGPoint(x: constWidth, y: blueView.frame.size.height - 30))
-        path.addLine(to: CGPoint(x: 30, y: constHeight - 30))
-        path.addQuadCurve(to: CGPoint(x: 0.0, y: constHeight), controlPoint: CGPoint(x: 0.0, y: constHeight - 30))
-        path.addLine(to: CGPoint(x: 0.0, y: 0.0))
-        path.close()
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        
-        blueView.layer.mask = shapeLayer
-    }
-    
-    func setupUI() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
-            self.viewModel.delegate = self
-           
-            self.tableViewManager = ListTableViewManager(tableView, data: viewModel.models())
-            self.tableViewManager?.eventHandler = { event in
-             //   self?.employeeEvent(event)
-            }
-        }
     }
 }
 
-extension ListViewController: ListViewModelDelegate {
-    func didFetchingData() {
-        self.tableViewManager?.reloadTable(data: viewModel.models())
+private extension ListViewController {
+    
+    func setupUI() {
+        self.view.backgroundColor = .white
+        helper.complexShape(inputView: blueView)
+        bindUI()
+    }
+    
+    func setupTable(_ data: [VideoModel]) {
+        self.tableViewManager = ListTableViewManager(tableView, data: data)
+        self.tableViewManager?.eventHandler = { event in
+        }
+    }
+    
+    func bindUI() {
+        viewModel.loading.bind(to: self.rx.isAnimating).disposed(by: disposeBag)
+        viewModel.dataList.drive(onNext: {[unowned self] newValue in
+            self.setupTable(newValue)
+        }).disposed(by: disposeBag)
     }
 }

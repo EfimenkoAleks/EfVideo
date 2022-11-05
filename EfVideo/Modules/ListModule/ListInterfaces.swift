@@ -6,19 +6,17 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol ListViewModelInputProtocol: AnyObject {}
 
 protocol ListViewModelOutputProtocol: AnyObject {
-    var delegate: ListViewModelDelegate? { set get }
-    func models() -> [VideoModel]
+    var dataList: Driver<[VideoModel]> { get }
+    var loading: Observable<Bool> { get }
 }
 
 protocol ListViewModelProtocol: ListViewModelInputProtocol, ListViewModelOutputProtocol {}
-
-//protocol MainRouterProtocol: AnyObject {
-//    func routToDetail(model: URL?)
-//}
 
 protocol ListViewModelDelegate: AnyObject {
     func didFetchingData()
