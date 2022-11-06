@@ -9,7 +9,7 @@ import UIKit
 
 enum EmployeeEvent {
     case reload
-    case selectedVideo(String)
+    case selectedVideo(VideoModel)
 }
 
 class ListTableViewManager: NSObject {
@@ -64,8 +64,8 @@ extension ListTableViewManager: UITableViewDataSource {
 
 extension ListTableViewManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if eventHandler != nil {
-//            eventHandler?(.selectedVideo(data[indexPath.row]))
-//        }
+        if eventHandler != nil {
+            eventHandler?(.selectedVideo(data[indexPath.row]))
+        }
     }
 }

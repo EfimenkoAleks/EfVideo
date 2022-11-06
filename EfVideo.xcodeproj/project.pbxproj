@@ -11,6 +11,11 @@
 		CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15812902EAA70099FA89 /* ListViewController.swift */; };
 		CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1C15822902EAA70099FA89 /* ListViewController.xib */; };
 		CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15852902F02B0099FA89 /* ListCoordinator.swift */; };
+		CE7421EA2916C4AB00C8A6EB /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421E82916C4AB00C8A6EB /* ListDetailViewController.swift */; };
+		CE7421EB2916C4AB00C8A6EB /* ListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7421E92916C4AB00C8A6EB /* ListDetailViewController.xib */; };
+		CE7421ED2916D08900C8A6EB /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421EC2916D08900C8A6EB /* ListDetailViewModel.swift */; };
+		CE7421EF2916D0C000C8A6EB /* ListDetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421EE2916D0C000C8A6EB /* ListDetailInterfaces.swift */; };
+		CE7421F12916FC2700C8A6EB /* ListDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421F02916FC2700C8A6EB /* ListDetailCoordinator.swift */; };
 		CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */; };
 		CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B3290D8C0500CB37EF /* ListHelper.swift */; };
 		CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67D829057C360051AA9C /* ListTableViewManager.swift */; };
@@ -74,6 +79,11 @@
 		CE1C15812902EAA70099FA89 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CE1C15822902EAA70099FA89 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		CE1C15852902F02B0099FA89 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		CE7421E82916C4AB00C8A6EB /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		CE7421E92916C4AB00C8A6EB /* ListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailViewController.xib; sourceTree = "<group>"; };
+		CE7421EC2916D08900C8A6EB /* ListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
+		CE7421EE2916D0C000C8A6EB /* ListDetailInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailInterfaces.swift; sourceTree = "<group>"; };
+		CE7421F02916FC2700C8A6EB /* ListDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailCoordinator.swift; sourceTree = "<group>"; };
 		CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		CEB810B3290D8C0500CB37EF /* ListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHelper.swift; sourceTree = "<group>"; };
 		CECE67D829057C360051AA9C /* ListTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewManager.swift; sourceTree = "<group>"; };
@@ -164,13 +174,25 @@
 			children = (
 				CECE67DF2905862C0051AA9C /* Cell */,
 				CE1C15812902EAA70099FA89 /* ListViewController.swift */,
+				CECE67D829057C360051AA9C /* ListTableViewManager.swift */,
 				CECE67E6290592470051AA9C /* ListViewModel.swift */,
 				CE1C15822902EAA70099FA89 /* ListViewController.xib */,
-				CECE67D829057C360051AA9C /* ListTableViewManager.swift */,
 				CECE67E8290595000051AA9C /* ListInterfaces.swift */,
 				CEB810B3290D8C0500CB37EF /* ListHelper.swift */,
 			);
 			path = ListModule;
+			sourceTree = "<group>";
+		};
+		CE7421E72916C46A00C8A6EB /* ListDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE7421E82916C4AB00C8A6EB /* ListDetailViewController.swift */,
+				CE7421E92916C4AB00C8A6EB /* ListDetailViewController.xib */,
+				CE7421EC2916D08900C8A6EB /* ListDetailViewModel.swift */,
+				CE7421EE2916D0C000C8A6EB /* ListDetailInterfaces.swift */,
+				CE7421F02916FC2700C8A6EB /* ListDetailCoordinator.swift */,
+			);
+			path = ListDetailModule;
 			sourceTree = "<group>";
 		};
 		CECE67DA290585150051AA9C /* Constants */ = {
@@ -288,6 +310,7 @@
 		CEE09CEB28F9C94400EA1B60 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE7421E72916C46A00C8A6EB /* ListDetailModule */,
 				CE1C15802902EA7B0099FA89 /* ListModule */,
 				CEE09CEC28F9C9DD00EA1B60 /* VideoModule */,
 			);
@@ -461,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECE68022905D91F0051AA9C /* mock_file.json in Resources */,
+				CE7421EB2916C4AB00C8A6EB /* ListDetailViewController.xib in Resources */,
 				CEE09CC828F9611D00EA1B60 /* LaunchScreen.storyboard in Resources */,
 				CECE67E3290586620051AA9C /* ListVideoCell.xib in Resources */,
 				CEE09CC528F9611D00EA1B60 /* Assets.xcassets in Resources */,
@@ -539,6 +563,8 @@
 				CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */,
 				CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */,
 				CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */,
+				CE7421EA2916C4AB00C8A6EB /* ListDetailViewController.swift in Sources */,
+				CE7421EF2916D0C000C8A6EB /* ListDetailInterfaces.swift in Sources */,
 				CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */,
 				CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */,
 				CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */,
@@ -560,8 +586,10 @@
 				CEE09CF928FC5F4B00EA1B60 /* AppManager.swift in Sources */,
 				CECE67DE2905861C0051AA9C /* TableViewCell+Extension.swift in Sources */,
 				CECE67F52905A12F0051AA9C /* ListModel.swift in Sources */,
+				CE7421ED2916D08900C8A6EB /* ListDetailViewModel.swift in Sources */,
 				CEE09D0028FC645C00EA1B60 /* TabBar+Extension.swift in Sources */,
 				CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */,
+				CE7421F12916FC2700C8A6EB /* ListDetailCoordinator.swift in Sources */,
 				CECE67F72905A8170051AA9C /* Data+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
