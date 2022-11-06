@@ -14,6 +14,8 @@ class ListViewController: BaseViewController {
     @IBOutlet private weak var blueView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     
+    var coordinator: ListCoordinatorProtocol?
+    
     private var tableViewManager: ListTableViewManager?
     private var helper: ListHelper = ListHelper()
     
@@ -39,7 +41,8 @@ private extension ListViewController {
     
     func setupTable(_ data: [VideoModel]) {
         self.tableViewManager = ListTableViewManager(tableView, data: data)
-        self.tableViewManager?.eventHandler = { event in
+        self.tableViewManager?.eventHandler = { [unowned self] event in
+            self.showVideo(event)
         }
     }
     
@@ -48,5 +51,14 @@ private extension ListViewController {
         viewModel.dataList.drive(onNext: {[unowned self] newValue in
             self.setupTable(newValue)
         }).disposed(by: disposeBag)
+    }
+    
+    func showVideo(_ video: EmployeeEvent) {
+        switch video {
+        case .reload:
+            break
+        case .selectedVideo(let video):
+            coordinator?.eventOccurred(with: .detail(video))
+        }
     }
 }

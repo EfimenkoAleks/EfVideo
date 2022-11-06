@@ -5,24 +5,33 @@
 //  Created by user on 16.10.2022.
 //
 
-import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
-    var cildren: [Coordinator]? = nil
+enum MainCoordinatorEvent {
+    case detail
+}
+
+protocol MainCoordinatorProtocol: Coordinator {
+    func start()
+}
+
+class MainCoordinator: MainCoordinatorProtocol {
+    var cildren: [Coordinator] = []
     
     var navigationController: UINavigationController?
     
-    func eventOccurred(with type: Event) {
-        switch type {
-        case .buttonTapped:
-            break
-        }
-    }
-    
     func start() {
-        var vc: UIViewController & Coordinating = VideoViewController()
+        let vc = VideoViewController()
         vc.coordinator = self
         navigationController?.setViewControllers([vc], animated: false)
+    }
+}
+
+extension MainCoordinator {
+    func eventOccurred(with type: MainCoordinatorEvent) {
+        switch type {
+        case .detail:
+            break
+        }
     }
 }

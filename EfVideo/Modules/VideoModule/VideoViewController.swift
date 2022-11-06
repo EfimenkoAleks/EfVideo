@@ -21,6 +21,8 @@ class VideoViewController: BaseViewController {
     private let player: AVQueuePlayer
     private var isPlayed: Bool = true
     
+    var coordinator: MainCoordinatorProtocol?
+    
     override init() {
         let url1 = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         let url2 = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")

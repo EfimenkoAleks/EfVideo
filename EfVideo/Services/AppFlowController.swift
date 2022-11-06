@@ -16,11 +16,8 @@ class AppFlowController: UIViewController {
         static var secondControllerImage: String = "book"
         static var firstSelectedControllerImage: String = "tray.fill"
         static var secondSelectedControllerImage: String = "book.fill"
-        static var urlForSecondController: URL = URL(string: "https://images.unsplash.com/photo-1643266809211-8c65ed4a92c8?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNTc4ODF8MHwxfGFsbHwyNXx8fHx8fHx8MTY0MzI5MTk0OQ&ixlib=rb-1.2.1&q=85")!
     }
-    private var firstCoordinator: ListCoordinator?
-    private var secondCoordinator: MainCoordinator?
-    
+
     var tabBarItemTypes: [TabBarItemType] {
         return []
     }
@@ -108,16 +105,16 @@ fileprivate extension AppFlowController {
         switch itemForVC {
         case .first:
             let navigController = UINavigationController()
-            firstCoordinator = ListCoordinator()
-            firstCoordinator?.navigationController = navigController
-            firstCoordinator?.start()
+            var firstCoordinator: ListCoordinatorProtocol = ListCoordinator()
+            firstCoordinator.navigationController = navigController
+            firstCoordinator.start()
             navigController.tabBarItem = itemForVC.item
             return navigController
         case .second:
             let navigController = UINavigationController()
-            secondCoordinator = MainCoordinator()
-            secondCoordinator?.navigationController = navigController
-            secondCoordinator?.start()
+            var secondCoordinator: MainCoordinatorProtocol = MainCoordinator()
+            secondCoordinator.navigationController = navigController
+            secondCoordinator.start()
             navigController.tabBarItem = itemForVC.item
             return navigController
         }

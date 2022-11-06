@@ -8,10 +8,9 @@
 import UIKit
 import RxSwift
 
-class BaseViewController: UIViewController, Coordinating {
+class BaseViewController: UIViewController {
 
     let activityView: UIActivityIndicatorView
-    var coordinator: Coordinator?
     var disposeBag: DisposeBag = DisposeBag()
     
     init() {
