@@ -15,26 +15,48 @@ class ListDetailViewController: BaseViewController {
     @IBOutlet weak var backButton: ControlButton!
     @IBOutlet weak var forwardButton: ControlButton!
     @IBOutlet weak var resizeButton: ControlButton!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var containerSliderView: UIView!
     
     @IBOutlet weak var filmView: UIView!
     
     var coordinator: ListDetailCoordinator?
+    
+    private var progressBarHighlightedObserver: NSKeyValueObservation?
+    public private(set) var isScrubbingInProgress: Bool = false
+    private var isSeekInProgress = false
+    private var isPlayed = true
+    private var isAutoPlay = true
+    private let player: AVPlayer
+    private let playerItem: AVPlayerItem
+    private let asset: AVAsset
+   
+    private lazy var slider: UISlider = {
+        let bar = UISlider()
+        bar.minimumTrackTintColor = .red
+        bar.maximumTrackTintColor = .white
+        bar.value = 0.0
+        bar.isContinuous = false
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
+        self.progressBarHighlightedObserver = bar.observe(\UISlider.isTracking, options: [.old, .new]) { [weak self] (_, change) in
+            if let newValue = change.newValue {
+                self?.didChangeProgressBarDragging(newValue, sliderValue: bar.value)
+            }
+        }
+        return bar
+    }()
     
     lazy var viewModel: ListDetailViewModelOutputProtocol = {
         let viewModel = ListDetailViewModel()
         return viewModel
     }()
     
-    private let player: AVPlayer
-    private var isPlayed: Bool = true
-    
     init(video: VideoModel?) {
         let videoUrl = video?.sources?.first ?? ""
         let url = URL(string: videoUrl)
 
-        let asset = AVAsset(url: url!)
-        let playerItem = AVPlayerItem(asset: asset)
+        asset = AVAsset(url: url!)
+        playerItem = AVPlayerItem(asset: asset)
 
         player = AVPlayer(playerItem: playerItem)
         
@@ -54,10 +76,32 @@ class ListDetailViewController: BaseViewController {
         observTrack()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("didDragSlider")
+    }
+    
     deinit {
         coordinator?.handlerBback?()
     }
+    
+    @objc func handleSliderChange(_ sender: UISlider) {
+        isSeekInProgress = true
+        isAutoPlay = false
+        
+        let duration = asset.duration
+        let durationTime = CMTimeGetSeconds(duration)
+        
+        let floatTime = Float(durationTime)
+        let newTime = floatTime / 100 * (sender.value * 100)
 
+        player.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000), toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] _ in
+            guard let `self` = self else { return }
+            self.isSeekInProgress = false
+            self.isAutoPlay = true
+            print("Player time after seeking: \(CMTimeGetSeconds(self.player.currentTime()))")
+        }
+    }
+    
     @IBAction func didTapPlayButton(_ sender: UIButton) {
         if !isPlayed {
             setPlayButton()
@@ -93,7 +137,7 @@ class ListDetailViewController: BaseViewController {
 private extension ListDetailViewController {
     
     func configureUI() {
-        self.title = "Main"
+        self.title = "Film"
         self.view.backgroundColor = .black
         
         let playerLayer = AVPlayerLayer(player: player)
@@ -101,6 +145,23 @@ private extension ListDetailViewController {
         playerLayer.videoGravity = .resize
         
         self.filmView.layer.addSublayer(playerLayer)
+        
+        containerSliderView.addSubview(slider)
+        NSLayoutConstraint.activate([
+            slider.leadingAnchor.constraint(equalTo: containerSliderView.leadingAnchor),
+            slider.trailingAnchor.constraint(equalTo: containerSliderView.trailingAnchor),
+            slider.centerYAnchor.constraint(equalTo: containerSliderView.centerYAnchor)
+        ])
+    }
+
+    func didChangeProgressBarDragging(_ newValue: Bool, sliderValue: Float) {
+        isScrubbingInProgress = newValue
+        if !isScrubbingInProgress && !isSeekInProgress {
+            changeSliderValue(sliderValue)
+        }
+    }
+    func changeSliderValue(_ sliderValue: Float) {
+        slider.value = sliderValue
     }
     
     func setUnMute() {
@@ -147,19 +208,19 @@ private extension ListDetailViewController {
             player.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000))
         }
     }
-    
+
     func observTrack() {
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 2), queue: DispatchQueue.main) {[weak self] (progressTime) in
-            if let duration = self?.player.currentItem?.duration {
-                
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 2), queue: DispatchQueue.main) { [weak self] (progressTime) in
+            if self?.isScrubbingInProgress == false, self?.isAutoPlay == true, let duration = self?.player.currentItem?.duration {
+
                 let durationSeconds = CMTimeGetSeconds(duration)
                 let seconds = CMTimeGetSeconds(progressTime)
                 let progress = Float(seconds/durationSeconds)
-                
+
                 DispatchQueue.main.async {
-                    self?.progressView.progress = progress
+                    self?.changeSliderValue(progress)
                     if progress >= 1.0 {
-                        self?.progressView.progress = 0.0
+                        self?.changeSliderValue(0.0)
                     }
                 }
             }
