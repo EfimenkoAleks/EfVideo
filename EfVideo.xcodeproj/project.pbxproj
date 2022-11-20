@@ -11,6 +11,7 @@
 		CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15812902EAA70099FA89 /* ListViewController.swift */; };
 		CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1C15822902EAA70099FA89 /* ListViewController.xib */; };
 		CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C15852902F02B0099FA89 /* ListCoordinator.swift */; };
+		CE4381C929295C4C0065DC5C /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4381C829295C4C0065DC5C /* VideoPlayer.xib */; };
 		CE7421EA2916C4AB00C8A6EB /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421E82916C4AB00C8A6EB /* ListDetailViewController.swift */; };
 		CE7421EB2916C4AB00C8A6EB /* ListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7421E92916C4AB00C8A6EB /* ListDetailViewController.xib */; };
 		CE7421ED2916D08900C8A6EB /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7421EC2916D08900C8A6EB /* ListDetailViewModel.swift */; };
@@ -34,6 +35,7 @@
 		CECE67FF2905C87F0051AA9C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67FE2905C87F0051AA9C /* DIContainer.swift */; };
 		CECE68012905CDDA0051AA9C /* mock_file.json in Sources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
 		CECE68022905D91F0051AA9C /* mock_file.json in Resources */ = {isa = PBXBuildFile; fileRef = CECE68002905CDDA0051AA9C /* mock_file.json */; };
+		CECEF5A22924180E0021F0E7 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEF5A12924180E0021F0E7 /* VideoPlayer.swift */; };
 		CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CB828F9611800EA1B60 /* AppDelegate.swift */; };
 		CEE09CBB28F9611800EA1B60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */; };
 		CEE09CBD28F9611800EA1B60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE09CBC28F9611800EA1B60 /* ViewController.swift */; };
@@ -79,6 +81,7 @@
 		CE1C15812902EAA70099FA89 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CE1C15822902EAA70099FA89 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		CE1C15852902F02B0099FA89 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		CE4381C829295C4C0065DC5C /* VideoPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayer.xib; sourceTree = "<group>"; };
 		CE7421E82916C4AB00C8A6EB /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		CE7421E92916C4AB00C8A6EB /* ListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailViewController.xib; sourceTree = "<group>"; };
 		CE7421EC2916D08900C8A6EB /* ListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		CECE67F82905B9A80051AA9C /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
 		CECE67FE2905C87F0051AA9C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		CECE68002905CDDA0051AA9C /* mock_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_file.json; sourceTree = "<group>"; };
+		CECEF5A12924180E0021F0E7 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		CEE09CB528F9611800EA1B60 /* EfVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EfVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE09CB828F9611800EA1B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE09CBA28F9611800EA1B60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +252,15 @@
 			path = ResponseModel;
 			sourceTree = "<group>";
 		};
+		CECEF5A329241C910021F0E7 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				CECEF5A12924180E0021F0E7 /* VideoPlayer.swift */,
+				CE4381C829295C4C0065DC5C /* VideoPlayer.xib */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		CEE09CAC28F9611800EA1B60 = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE09CF428FC0A0400EA1B60 /* ControlButton.swift */,
+				CECEF5A329241C910021F0E7 /* Player */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -487,6 +501,7 @@
 				CE7421EB2916C4AB00C8A6EB /* ListDetailViewController.xib in Resources */,
 				CEE09CC828F9611D00EA1B60 /* LaunchScreen.storyboard in Resources */,
 				CECE67E3290586620051AA9C /* ListVideoCell.xib in Resources */,
+				CE4381C929295C4C0065DC5C /* VideoPlayer.xib in Resources */,
 				CEE09CC528F9611D00EA1B60 /* Assets.xcassets in Resources */,
 				CE1C15842902EAA70099FA89 /* ListViewController.xib in Resources */,
 				CEE09CF028F9CA9100EA1B60 /* VideoViewController.xib in Resources */,
@@ -564,6 +579,7 @@
 				CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */,
 				CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */,
 				CE7421EA2916C4AB00C8A6EB /* ListDetailViewController.swift in Sources */,
+				CECEF5A22924180E0021F0E7 /* VideoPlayer.swift in Sources */,
 				CE7421EF2916D0C000C8A6EB /* ListDetailInterfaces.swift in Sources */,
 				CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */,
 				CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */,
