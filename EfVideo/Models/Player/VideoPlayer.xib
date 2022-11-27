@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoPlayer" customModule="EfVideo" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="4BM-M4-jcp" id="4gi-yi-HDK"/>
+                <outlet property="containerCutSliderView" destination="nSi-7o-GTC" id="7SF-AH-rZL"/>
                 <outlet property="containerSliderView" destination="SKd-6D-SSn" id="mJF-L3-FoG"/>
                 <outlet property="forwardButton" destination="KCs-u0-6VQ" id="rHT-lr-9OG"/>
                 <outlet property="muteButton" destination="W62-zW-8Dp" id="coU-XM-EYo"/>
@@ -26,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4T-ge-cT2">
-                    <rect key="frame" x="0.0" y="44" width="379" height="356"/>
+                    <rect key="frame" x="0.0" y="48" width="379" height="352"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-iJ-VG4">
                             <rect key="frame" x="8" y="0.0" width="363" height="200"/>
@@ -36,7 +37,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-7o-GTC">
-                            <rect key="frame" x="0.0" y="256" width="379" height="100"/>
+                            <rect key="frame" x="0.0" y="252" width="379" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-Ed-his" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
                                     <rect key="frame" x="169.5" y="44" width="40" height="40"/>
@@ -165,27 +166,27 @@
     </objects>
     <designables>
         <designable name="1WG-Ed-his">
-            <size key="intrinsicContentSize" width="40" height="31"/>
+            <size key="intrinsicContentSize" width="43.5" height="34"/>
         </designable>
         <designable name="4BM-M4-jcp">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="KCs-u0-6VQ">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="W62-zW-8Dp">
-            <size key="intrinsicContentSize" width="42" height="31"/>
+            <size key="intrinsicContentSize" width="45.5" height="34"/>
         </designable>
         <designable name="gMg-rP-OcY">
-            <size key="intrinsicContentSize" width="46" height="31"/>
+            <size key="intrinsicContentSize" width="49.5" height="34"/>
         </designable>
     </designables>
     <resources>
         <image name="arrow.up.left.and.down.right.and.arrow.up.right.and.down.left" catalog="system" width="128" height="115"/>
-        <image name="gobackward.15" catalog="system" width="121" height="128"/>
-        <image name="goforward.15" catalog="system" width="121" height="128"/>
-        <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="speaker.slash.fill" catalog="system" width="124" height="128"/>
+        <image name="gobackward.15" catalog="system" width="119" height="128"/>
+        <image name="goforward.15" catalog="system" width="119" height="128"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <image name="speaker.slash.fill" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

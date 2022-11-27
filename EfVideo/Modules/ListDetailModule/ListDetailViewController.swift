@@ -55,5 +55,21 @@ private extension ListDetailViewController {
         guard let player = player else { return }
         self.player?.isUserInteractionEnabled = true
         containerView.addSubview(player)
+        self.player?.handlerEvent = { [unowned self] newUrl in
+            self.shareVideo(newUrl)
+        }
+    }
+    
+    func shareVideo(_ url: URL) {
+//        let localVideoPath = "your_video_path_here..."
+//            let videoURL = URL(fileURLWithPath: localVideoPath)
+
+            let activityItems: [Any] = [url, "Check this out!"]
+            let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+            activityController.popoverPresentationController?.sourceView = view
+            activityController.popoverPresentationController?.sourceRect = view.frame
+
+            self.present(activityController, animated: true, completion: nil)
     }
 }

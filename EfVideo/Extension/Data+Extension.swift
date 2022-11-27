@@ -25,6 +25,16 @@ extension Data {
         let decoder = JSONDecoder()
         return try? decoder.decode(T.self, from: data)
     }
+    
+    func convertToURL() -> URL {
+        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("video").appendingPathExtension("mp4")
+        do {
+            try self.write(to: tempURL, options: [.atomic])
+        } catch {
+            print()
+        }
+        return tempURL
+    }
 }
 
 extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
