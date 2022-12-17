@@ -11,9 +11,8 @@ import MobileCoreServices
 import MultiSlider
 
 class VideoPlayer: UIView {
-    
+ 
     @IBOutlet weak var vwPlayer: UIView!
-    
     @IBOutlet weak var playButton: ControlButton!
     @IBOutlet weak var muteButton: ControlButton!
     @IBOutlet weak var backButton: ControlButton!
@@ -21,6 +20,10 @@ class VideoPlayer: UIView {
     @IBOutlet weak var resizeButton: ControlButton!
     @IBOutlet weak var containerSliderView: UIView!
     @IBOutlet weak var containerCutSliderView: UIView!
+    @IBOutlet weak var allContainerView: UIView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var widthVideoView: NSLayoutConstraint!
+    @IBOutlet weak var heightVideoView: NSLayoutConstraint!
     
     var handlerEvent: ((URL) -> Void)?
     
@@ -33,7 +36,13 @@ class VideoPlayer: UIView {
     private var playerItem: AVPlayerItem
     private var asset: AVAsset
     private var videoUrl: URL
+    private var cutView: UIView?
     private var cutSlider: MultiSlider?
+    private var sliderValue: SliderValue?
+    private var label1: UILabel?
+    private var label2: UILabel?
+    
+    private let helper: PlayerHelper = PlayerHelper()
     
     private lazy var slider: UISlider = {
         let bar = UISlider()
@@ -67,13 +76,6 @@ class VideoPlayer: UIView {
         setPlayButton()
         observTrack()
     }
-    
-    fileprivate func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed("VideoPlayer", owner: self, options: nil)?.first as! UIView
-        viewFromXib.isUserInteractionEnabled = true
-        viewFromXib.frame = self.bounds
-            addSubview(viewFromXib)
-        }
        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -109,29 +111,41 @@ class VideoPlayer: UIView {
         forwardVideo(by: 15)
     }
     
-    @IBAction func didTapResizeButton(_ sender: UIButton) {
-        
-        addCutView()
-        
-//        getDataFor(statTime: Float(200), endTime: Float(250)) { [unowned self] newUrl in
-//            guard let videoUrl = newUrl else { return }
-//            DispatchQueue.main.async {
-//                self.handlerEvent?(videoUrl)
-//            }
-//        }
+    @IBAction func didTapCropButton(_ sender: UIButton) {
+        if cutView == nil {
+            sliderValue = SliderValue(first: 0.0, last: 0.0)
+            addCutView()
+        } else {
+            cutView?.removeFromSuperview()
+            cutView = nil
+        }
     }
 }
 
 private extension VideoPlayer {
     
+    func commonInit() {
+        let viewFromXib = Bundle.main.loadNibNamed("VideoPlayer", owner: self, options: nil)?.first as! UIView
+        viewFromXib.isUserInteractionEnabled = true
+        viewFromXib.frame = self.bounds
+            addSubview(viewFromXib)
+        }
+    
     func configureUI() {
         backgroundColor = UIColor.black
         
+        
+        let width = (frame.width * 0.97).rounded()
+        let height = (width / 16 * 9).rounded()
+        heightVideoView.constant = height
+        widthVideoView.constant = width
+        vwPlayer.layoutIfNeeded()
+        
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.vwPlayer.bounds
+        playerLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
         playerLayer.videoGravity = .resize
         
-        self.vwPlayer.layer.addSublayer(playerLayer)
+        vwPlayer.layer.addSublayer(playerLayer)
         
         containerSliderView.addSubview(slider)
         NSLayoutConstraint.activate([
@@ -167,6 +181,14 @@ private extension VideoPlayer {
     }
     func changeSliderValue(_ sliderValue: Float) {
         slider.value = sliderValue
+    }
+    
+    func setDisplayTimeVideo(seconds: Float64?, allDuration: Float64?) {
+        guard let sec = seconds, let duration = allDuration else { return }
+        
+        let currentSec = secondsToHoursMinutesSeconds(Int(sec.rounded()))
+        let durationSec = secondsToHoursMinutesSeconds(Int(duration.rounded()))
+        timeLabel.text = "\(currentSec) / \(durationSec)"
     }
     
     func setUnMute() {
@@ -223,6 +245,7 @@ private extension VideoPlayer {
                 let progress = Float(seconds/durationSeconds)
 
                 DispatchQueue.main.async {
+                    self?.setDisplayTimeVideo(seconds: seconds, allDuration: durationSeconds)
                     self?.changeSliderValue(progress)
                     if progress >= 1.0 {
                         self?.changeSliderValue(0.0)
@@ -232,91 +255,53 @@ private extension VideoPlayer {
         }
     }
     
-    func getDataFor(statTime: Float, endTime: Float, completion: @escaping (URL?) -> ()) {
-        
-        let asset = self.asset
-        guard asset.isExportable,
-              let sourceVideoTrack = asset.tracks(withMediaType: .video).first,
-              let sourceAudioTrack = asset.tracks(withMediaType: .audio).first else {
-                  completion(nil)
-                  return
-              }
-        
-        let composition = AVMutableComposition()
-        let compositionVideoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
-        let compositionAudioTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
-                
-        do {
-            try compositionVideoTrack?.insertTimeRange(CMTimeRangeMake(start: .zero, duration: asset.duration), of: sourceVideoTrack, at: .zero)
-            try compositionAudioTrack?.insertTimeRange(CMTimeRangeMake(start: .zero, duration: asset.duration), of: sourceAudioTrack, at: .zero)
-        } catch {
-            completion(nil)
-            return
-        }
-        
-        let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: composition)
-        var preset = AVAssetExportPresetPassthrough
-        let preferredPreset = AVAssetExportPreset1920x1080
-        if compatiblePresets.contains(preferredPreset) {
-            preset = preferredPreset
-        }
-        
-        let fileType: AVFileType = .mp4
-
-        guard let exportSession = AVAssetExportSession(asset: composition, presetName: preset),
-              exportSession.supportedFileTypes.contains(fileType) else {
-                  completion(nil)
-                  return
-              }
-        
-        let tempFileUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp_video_data")
-        
-        exportSession.outputURL = tempFileUrl
-        exportSession.outputFileType = fileType
-    //    let startTime = CMTimeMake(value: 0, timescale: 1)
-    //    let timeRange = CMTimeRangeMake(start: startTime, duration: asset.duration)
-        let timeRange = CMTimeRange(start: CMTime(seconds: Double(statTime), preferredTimescale: 1000),
-                                    end: CMTime(seconds: Double(endTime), preferredTimescale: 1000))
-        
-        exportSession.timeRange = timeRange
-        
-        exportSession.exportAsynchronously {
-            print(tempFileUrl)
-            print(String(describing: exportSession.error))
-            let data = try? Data(contentsOf: tempFileUrl)
-            try? FileManager.default.removeItem(at: tempFileUrl)
-            let url = data?.convertToURL()
-            completion(url)
+    @objc func didTapSendButton(sender: UIButton!) {
+        guard let time1 = sliderValue?.timeFirst, let time2 = sliderValue?.timeSecond else { return }
+        helper.getDataFor(statTime: time1, endTime: time2, asset: asset) { [unowned self] newUrl in
+            guard let videoUrl = newUrl else { return }
+            DispatchQueue.main.async {
+                self.handlerEvent?(videoUrl)
+            }
         }
     }
 }
 
 private extension VideoPlayer {
     func addCutView() {
-        let cutView = UIView()
-        cutView.backgroundColor = .yellow
-        cutView.translatesAutoresizingMaskIntoConstraints = false
-        containerCutSliderView.addSubview(cutView)
+        guard player.currentItem != nil else { return }
+        
+        cutView = UIView()
+        cutView?.layer.cornerRadius = 10
+        cutView?.layer.borderWidth = 1
+        cutView?.layer.borderColor = UIColor.white.cgColor
+        cutView?.layer.masksToBounds = true
+        cutView?.backgroundColor = UIColor.black
+        cutView?.translatesAutoresizingMaskIntoConstraints = false
+        guard let cutView = cutView else { return }
+        allContainerView.addSubview(cutView)
         
         NSLayoutConstraint.activate([
-            cutView.topAnchor.constraint(equalTo: containerCutSliderView.topAnchor, constant: -5),
-            cutView.leadingAnchor.constraint(equalTo: containerCutSliderView.leadingAnchor),
-            cutView.trailingAnchor.constraint(equalTo: containerCutSliderView.trailingAnchor),
-            cutView.bottomAnchor.constraint(equalTo: containerCutSliderView.bottomAnchor)
+            cutView.bottomAnchor.constraint(equalTo: allContainerView.bottomAnchor),
+            cutView.leadingAnchor.constraint(equalTo: allContainerView.leadingAnchor),
+            cutView.trailingAnchor.constraint(equalTo: allContainerView.trailingAnchor),
+            cutView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
+        let constMinValue: CGFloat = 0.0
+        let constMaxValue: CGFloat = 100.0
+        
         cutSlider = MultiSlider()
-        cutSlider?.minimumValue = 1    // default is 0.0
-        cutSlider?.maximumValue = 10    // default is 1.0
+        cutSlider?.minimumValue = constMinValue    // default is 0.0
+        cutSlider?.maximumValue = constMaxValue   // default is 1.0
         cutSlider?.outerTrackColor = .lightGray
         cutSlider?.orientation = .horizontal
         
-        cutSlider?.valueLabelPosition = .left // .notAnAttribute = don't show labels
+        cutSlider?.valueLabelPosition = .notAnAttribute // .notAnAttribute = don't show labels
         cutSlider?.isValueLabelRelative = true // show differences between thumbs instead of absolute values
-        cutSlider?.valueLabelFormatter.positiveSuffix = " ?s"
+        cutSlider?.valueLabelFormatter.positiveSuffix = ""
         
-        cutSlider?.tintColor = .cyan // color of track
-        cutSlider?.trackWidth = 32
+        cutSlider?.tintColor = UIColor.systemBlue // color of track
+        cutSlider?.trackWidth = 10
         cutSlider?.hasRoundTrackEnds = true
         cutSlider?.showsThumbImageShadow = false // wide tracks look better without thumb shadow
         
@@ -324,11 +309,11 @@ private extension VideoPlayer {
         cutSlider?.minimumImage = UIImage(named: "clown")
         cutSlider?.maximumImage = UIImage(named: "cloud")
         
-        cutSlider?.disabledThumbIndices = [3, 7]
+        cutSlider?.disabledThumbIndices = []
         
-        cutSlider?.snapStepSize = 0.1  // default is 0.0, i.e. don't snap
+        cutSlider?.snapStepSize = 0.0  // default is 0.0, i.e. don't snap
 
-        cutSlider?.value = [0, 10]
+        cutSlider?.value = [constMinValue, constMaxValue]
 
         cutSlider?.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged) // continuous changes
         cutSlider?.addTarget(self, action: #selector(sliderDragEnded(_:)), for: . touchUpInside) // sent when drag ends
@@ -338,19 +323,174 @@ private extension VideoPlayer {
         cutView.addSubview(slider)
         
         NSLayoutConstraint.activate([
-            slider.centerYAnchor.constraint(equalTo: cutView.centerYAnchor),
+            slider.bottomAnchor.constraint(equalTo: cutView.bottomAnchor),
             slider.leadingAnchor.constraint(equalTo: cutView.leadingAnchor),
             slider.trailingAnchor.constraint(equalTo: cutView.trailingAnchor)
         ])
+        
+        let sendButton = UIButton()
+        sendButton.layer.borderColor = UIColor.black.cgColor
+        sendButton.layer.borderWidth = 1
+        sendButton.layer.cornerRadius = 5.0
+        sendButton.layer.masksToBounds = true
+        sendButton.backgroundColor = UIColor.systemBlue
+        sendButton.setTitle("Send", for: .normal)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
+        cutView.addSubview(sendButton)
+        
+        NSLayoutConstraint.activate([
+            sendButton.trailingAnchor.constraint(equalTo: cutView.trailingAnchor, constant: -10),
+            sendButton.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
+            sendButton.widthAnchor.constraint(equalToConstant: 80),
+            sendButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        label1 = UILabel()
+        label1?.layer.borderColor = UIColor.black.cgColor
+        label1?.layer.borderWidth = 1
+        label1?.layer.cornerRadius = 5.0
+        label1?.layer.masksToBounds = true
+        label1?.backgroundColor = UIColor.white
+        label1?.textColor = UIColor.black
+        label1?.textAlignment = NSTextAlignment.center
+        label1?.text = "0"
+        label1?.translatesAutoresizingMaskIntoConstraints = false
+        guard let label1 = label1 else { return }
+        cutView.addSubview(label1)
+        
+        NSLayoutConstraint.activate([
+            label1.leadingAnchor.constraint(equalTo: cutView.leadingAnchor, constant: 10),
+            label1.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
+            label1.widthAnchor.constraint(equalToConstant: 100),
+            label1.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        label2 = UILabel()
+        label2?.layer.borderColor = UIColor.black.cgColor
+        label2?.layer.borderWidth = 1
+        label2?.layer.cornerRadius = 5.0
+        label2?.layer.masksToBounds = true
+        label2?.backgroundColor = UIColor.white
+        label2?.textColor = UIColor.black
+        label2?.textAlignment = NSTextAlignment.center
+        label2?.text = "0"
+        label2?.translatesAutoresizingMaskIntoConstraints = false
+        guard let label2 = label2 else { return }
+        cutView.addSubview(label2)
+        
+        NSLayoutConstraint.activate([
+            label2.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 10),
+            label2.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
+            label2.widthAnchor.constraint(equalToConstant: 100),
+            label2.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        sliderValue?.first = Float(constMinValue)
+        sliderValue?.last = Float(constMaxValue)
     }
     
     @objc func sliderChanged(_ slider: MultiSlider) {
         print("thumb \(slider.draggedThumbIndex) moved")
         print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
+        guard let first = slider.value.first, let second = slider.value.last else { return }
+        
+        let firstTime = createTime(Float(first)).seconds.rounded()
+        let secondTime = createTime(Float(second)).seconds.rounded()
+        let firstDisplayTime = secondsToHoursMinutesSeconds(Int(firstTime))
+        let secondDisplayTime = secondsToHoursMinutesSeconds(Int(secondTime))
+        label1?.text = firstDisplayTime
+        label2?.text = secondDisplayTime
+        sliderValue?.timeFirst = createTime(Float(first))
+        sliderValue?.timeSecond = createTime(Float(second))
+        
+        if sliderValue?.first != Float(first) {
+            sliderValue?.first = Float(first)
+            changeDableSlider(sliderValue?.first ?? 0)
+        } else if sliderValue?.last != Float(second) {
+            sliderValue?.last = Float(second)
+            changeDableSlider(sliderValue?.last ?? 0)
+        }
     }
     
     @objc func sliderDragEnded(_ slider: MultiSlider) {
         print("thumb \(slider.draggedThumbIndex) moved")
         print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
+        guard let first = slider.value.first, let second = slider.value.last else { return }
+        
+        sliderValue?.first = Float(first)
+        sliderValue?.last = Float(second)
     }
+    
+    private func changeDableSlider(_ sliderValue: Float) {
+        isSeekInProgress = true
+        isAutoPlay = false
+        
+        let time = createTime(sliderValue)
+
+        player.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] _ in
+            guard let `self` = self else { return }
+            self.isSeekInProgress = false
+            self.isAutoPlay = true
+            print("Player time after seeking: \(CMTimeGetSeconds(self.player.currentTime()))")
+        }
+    }
+    
+    private func createTime(_ sliderValue: Float) -> CMTime {
+        let duration = asset.duration
+        let durationTime = CMTimeGetSeconds(duration)
+        
+        let floatTime = Float(durationTime)
+        let newTime = floatTime / 100 * sliderValue
+        
+        return CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000)
+    }
+
+    func secondsToHoursMinutesSeconds(_ time: Int) -> String {
+        let seconds = (time % 3600) % 60
+        let minute = (time % 3600) / 60
+        let hours = time / 3600
+        var finelTime = "\(0)"
+        var secondStr = ""
+        var minuteStr = ""
+        
+        if seconds != 0 {
+            secondStr = "\(seconds)"
+        }
+        if minute != 0 && seconds > 0 && seconds < 10 {
+            secondStr = "0\(seconds)"
+        }
+        if minute != 0 && seconds == 0 {
+            secondStr = "00"
+        }
+        
+        if minute != 0 {
+            minuteStr = "\(minute)"
+        }
+        if hours != 0 && minute > 0 && minute < 10 {
+            minuteStr = "0\(minute)"
+        }
+        if hours != 0 && minute == 0 {
+            minuteStr = "00"
+        }
+        
+        if seconds != 0 {
+            finelTime = "\(secondStr)"
+        }
+        if minute != 0 {
+            finelTime = "\(minuteStr):\(secondStr)"
+        }
+        if hours != 0 {
+            finelTime = "\(hours):\(minuteStr):\(secondStr)"
+        }
+        return finelTime
+    }
+}
+
+
+struct SliderValue {
+    var first: Float
+    var last: Float
+    var timeFirst: CMTime?
+    var timeSecond: CMTime?
 }
