@@ -53,7 +53,7 @@ private extension ListViewController {
         }).disposed(by: disposeBag)
     }
     
-    func showVideo(_ video: EmployeeEvent) {
+    func showVideo(_ video: ListEvent) {
         switch video {
         case .reload:
             break

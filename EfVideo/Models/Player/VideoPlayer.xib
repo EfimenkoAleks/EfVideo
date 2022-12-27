@@ -14,6 +14,7 @@
                 <outlet property="allContainerView" destination="l4T-ge-cT2" id="Do2-go-AV7"/>
                 <outlet property="backButton" destination="4BM-M4-jcp" id="4gi-yi-HDK"/>
                 <outlet property="containerCutSliderView" destination="nSi-7o-GTC" id="7SF-AH-rZL"/>
+                <outlet property="containerHeight" destination="M2g-us-Rcd" id="kLq-2A-FZF"/>
                 <outlet property="containerSliderView" destination="SKd-6D-SSn" id="mJF-L3-FoG"/>
                 <outlet property="forwardButton" destination="KCs-u0-6VQ" id="rHT-lr-9OG"/>
                 <outlet property="heightVideoView" destination="ZKZ-5R-AUX" id="GUd-oE-E26"/>
@@ -34,15 +35,15 @@
                     <rect key="frame" x="0.0" y="48" width="379" height="500"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-iJ-VG4">
-                            <rect key="frame" x="9.5" y="0.0" width="360" height="202.5"/>
+                            <rect key="frame" x="89.5" y="0.0" width="200" height="200"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="360" id="H7J-ar-nAz"/>
-                                <constraint firstAttribute="height" constant="202.5" id="ZKZ-5R-AUX"/>
+                                <constraint firstAttribute="width" constant="200" id="H7J-ar-nAz"/>
+                                <constraint firstAttribute="height" constant="200" id="ZKZ-5R-AUX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-7o-GTC">
-                            <rect key="frame" x="0.0" y="207.5" width="379" height="130"/>
+                            <rect key="frame" x="0.0" y="220" width="379" height="130"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-Ed-his" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
                                     <rect key="frame" x="169.5" y="74" width="40" height="40"/>
@@ -156,12 +157,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="nSi-7o-GTC" firstAttribute="leading" secondItem="l4T-ge-cT2" secondAttribute="leading" id="3GE-Nf-g2f"/>
-                        <constraint firstAttribute="height" constant="500" id="Djc-DR-iSF"/>
-                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="top" secondItem="l4T-ge-cT2" secondAttribute="top" id="FRt-Yo-gvH"/>
-                        <constraint firstAttribute="trailing" secondItem="nSi-7o-GTC" secondAttribute="trailing" id="UTy-0O-yrO"/>
-                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="centerX" secondItem="l4T-ge-cT2" secondAttribute="centerX" id="nXc-wb-ahg"/>
-                        <constraint firstItem="nSi-7o-GTC" firstAttribute="top" secondItem="lDi-iJ-VG4" secondAttribute="bottom" constant="5" id="rID-ni-WHt"/>
+                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="centerX" secondItem="l4T-ge-cT2" secondAttribute="centerX" id="5L9-FG-aD9"/>
+                        <constraint firstItem="nSi-7o-GTC" firstAttribute="leading" secondItem="l4T-ge-cT2" secondAttribute="leading" id="8k2-ml-Ph0"/>
+                        <constraint firstAttribute="bottom" secondItem="nSi-7o-GTC" secondAttribute="bottom" constant="150" id="C1M-HS-gpD"/>
+                        <constraint firstAttribute="height" constant="500" id="M2g-us-Rcd"/>
+                        <constraint firstAttribute="trailing" secondItem="nSi-7o-GTC" secondAttribute="trailing" id="n3t-rX-nQn"/>
+                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="top" secondItem="l4T-ge-cT2" secondAttribute="top" id="uaB-YZ-tJ8"/>
                     </constraints>
                 </view>
             </subviews>

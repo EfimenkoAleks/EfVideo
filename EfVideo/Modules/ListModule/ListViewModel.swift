@@ -12,20 +12,21 @@ import AVFoundation
 
 class ListViewModel {
     
-    private var fetcher: ListApiProtocol
+    private var _fetcher: ListApiProtocol
     private var _dataList: BehaviorSubject<[VideoModel]> = BehaviorSubject<[VideoModel]>(value: [])
     private var _loading: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: true)
     
     init(fetcher: ListApiProtocol = DIContainer.default.listService) {
-        self.fetcher = fetcher
+        self._fetcher = fetcher
         
         fechData()
     }
     
     private func fechData() {
+        // Simulating a download from a server
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
             self._loading.onNext(false)
-            fetcher.getListVideo { result in
+            _fetcher.getListVideo { result in
                 switch result {
                 case .success(let model):
                     let albums = model.categories.first?.videos ?? []

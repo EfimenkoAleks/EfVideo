@@ -21,21 +21,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1B-yo-SWd">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-Ma-cs7">
-                            <rect key="frame" x="0.0" y="181" width="414" height="500"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="500" id="raQ-is-S6T"/>
-                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="oSz-Ma-cs7" firstAttribute="centerX" secondItem="X1B-yo-SWd" secondAttribute="centerX" id="j0W-i4-aBH"/>
+                        <constraint firstItem="oSz-Ma-cs7" firstAttribute="top" secondItem="X1B-yo-SWd" secondAttribute="top" id="3Kd-3K-cbS"/>
+                        <constraint firstItem="oSz-Ma-cs7" firstAttribute="centerX" secondItem="X1B-yo-SWd" secondAttribute="centerX" id="EQB-8K-XkU"/>
+                        <constraint firstAttribute="bottom" secondItem="oSz-Ma-cs7" secondAttribute="bottom" id="dOk-MX-JaO"/>
+                        <constraint firstItem="oSz-Ma-cs7" firstAttribute="centerY" secondItem="X1B-yo-SWd" secondAttribute="centerY" id="hki-Mp-hjL"/>
                         <constraint firstAttribute="trailing" secondItem="oSz-Ma-cs7" secondAttribute="trailing" id="orJ-cm-4hY"/>
-                        <constraint firstItem="oSz-Ma-cs7" firstAttribute="centerY" secondItem="X1B-yo-SWd" secondAttribute="centerY" id="tdm-Xs-sD2"/>
                         <constraint firstItem="oSz-Ma-cs7" firstAttribute="leading" secondItem="X1B-yo-SWd" secondAttribute="leading" id="z7h-kZ-vjx"/>
                     </constraints>
                 </view>
@@ -44,7 +43,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="X1B-yo-SWd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7Ef-2H-Mga"/>
-                <constraint firstItem="X1B-yo-SWd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Aci-ci-5Yc"/>
+                <constraint firstItem="X1B-yo-SWd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Aci-ci-5Yc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="X1B-yo-SWd" secondAttribute="bottom" id="vJZ-jy-2Bc"/>
                 <constraint firstItem="X1B-yo-SWd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wrW-mG-aYa"/>
             </constraints>

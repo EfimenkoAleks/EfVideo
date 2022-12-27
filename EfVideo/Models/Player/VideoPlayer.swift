@@ -24,6 +24,7 @@ class VideoPlayer: UIView {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var widthVideoView: NSLayoutConstraint!
     @IBOutlet weak var heightVideoView: NSLayoutConstraint!
+    @IBOutlet weak var containerHeight: NSLayoutConstraint!
     
     var handlerEvent: ((URL) -> Void)?
     
@@ -36,12 +37,8 @@ class VideoPlayer: UIView {
     private var playerItem: AVPlayerItem
     private var asset: AVAsset
     private var videoUrl: URL
-    private var cutView: UIView?
-    private var cutSlider: MultiSlider?
+    private var cutView: CutView?
     private var sliderValue: SliderValue?
-    private var label1: UILabel?
-    private var label2: UILabel?
-    
     private let helper: PlayerHelper = PlayerHelper()
     
     private lazy var slider: UISlider = {
@@ -72,7 +69,7 @@ class VideoPlayer: UIView {
         super.init(frame: rect)
         
         commonInit()
-        configureUI()
+        configureUI(url: url, constantHeight: rect.height)
         setPlayButton()
         observTrack()
     }
@@ -131,18 +128,34 @@ private extension VideoPlayer {
             addSubview(viewFromXib)
         }
     
-    func configureUI() {
+    func configureUI(url: URL?, constantHeight: CGFloat) {
         backgroundColor = UIColor.black
+        containerHeight.constant = constantHeight
         
+        guard let track = AVURLAsset(url: url!).tracks(withMediaType: AVMediaType.video).first else { return }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        let sizeWidth = abs(size.width)
+        let sizeHeight = abs(size.height)
+        let constContainer: CGFloat = constantHeight - 290.0
+        var heightView: CGFloat = 0.0
+        var widthView: CGFloat = 0.0
         
-        let width = (frame.width * 0.97).rounded()
-        let height = (width / 16 * 9).rounded()
-        heightVideoView.constant = height
-        widthVideoView.constant = width
-        vwPlayer.layoutIfNeeded()
+        if sizeHeight > sizeWidth {
+            heightView = constContainer
+            widthView = (heightView * sizeWidth / sizeHeight).rounded()
+        } else if sizeHeight < sizeWidth {
+            widthView = frame.width
+            heightView = (sizeHeight * widthView / sizeWidth).rounded()
+        } else {
+            heightView = 200
+            widthView = 200
+        }
+        
+        heightVideoView.constant = heightView
+        widthVideoView.constant = widthView
         
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        playerLayer.frame = CGRect(x: 0, y: 0, width: widthView, height: heightView)
         playerLayer.videoGravity = .resize
         
         vwPlayer.layer.addSublayer(playerLayer)
@@ -186,8 +199,8 @@ private extension VideoPlayer {
     func setDisplayTimeVideo(seconds: Float64?, allDuration: Float64?) {
         guard let sec = seconds, let duration = allDuration else { return }
         
-        let currentSec = secondsToHoursMinutesSeconds(Int(sec.rounded()))
-        let durationSec = secondsToHoursMinutesSeconds(Int(duration.rounded()))
+        let currentSec = helper.secondsToHoursMinutesSeconds(Int(sec.rounded()))
+        let durationSec = helper.secondsToHoursMinutesSeconds(Int(duration.rounded()))
         timeLabel.text = "\(currentSec) / \(durationSec)"
     }
     
@@ -235,14 +248,14 @@ private extension VideoPlayer {
             player.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000))
         }
     }
-
+    
     func observTrack() {
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 2), queue: DispatchQueue.main) { [weak self] (progressTime) in
-            if self?.isScrubbingInProgress == false, self?.isAutoPlay == true, let duration = self?.player.currentItem?.duration {
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: DispatchQueue.global()) { [weak self] (progressTime) in
+            if self?.isScrubbingInProgress == false, self?.isAutoPlay == true, let duration = self?.player.currentItem?.asset.duration {
 
-                let durationSeconds = CMTimeGetSeconds(duration)
-                let seconds = CMTimeGetSeconds(progressTime)
-                let progress = Float(seconds/durationSeconds)
+                let durationSeconds: Double = Double(CMTimeGetSeconds(duration))
+                let seconds: Double = progressTime.seconds
+                let progress: Float = Float(seconds/durationSeconds)
 
                 DispatchQueue.main.async {
                     self?.setDisplayTimeVideo(seconds: seconds, allDuration: durationSeconds)
@@ -270,18 +283,13 @@ private extension VideoPlayer {
     func addCutView() {
         guard player.currentItem != nil else { return }
         
-        cutView = UIView()
-        cutView?.layer.cornerRadius = 10
-        cutView?.layer.borderWidth = 1
-        cutView?.layer.borderColor = UIColor.white.cgColor
-        cutView?.layer.masksToBounds = true
-        cutView?.backgroundColor = UIColor.black
+        cutView = CutView()
         cutView?.translatesAutoresizingMaskIntoConstraints = false
         guard let cutView = cutView else { return }
         allContainerView.addSubview(cutView)
         
         NSLayoutConstraint.activate([
-            cutView.bottomAnchor.constraint(equalTo: allContainerView.bottomAnchor),
+            cutView.bottomAnchor.constraint(equalTo: allContainerView.bottomAnchor, constant: -20),
             cutView.leadingAnchor.constraint(equalTo: allContainerView.leadingAnchor),
             cutView.trailingAnchor.constraint(equalTo: allContainerView.trailingAnchor),
             cutView.heightAnchor.constraint(equalToConstant: 100)
@@ -290,104 +298,11 @@ private extension VideoPlayer {
         let constMinValue: CGFloat = 0.0
         let constMaxValue: CGFloat = 100.0
         
-        cutSlider = MultiSlider()
-        cutSlider?.minimumValue = constMinValue    // default is 0.0
-        cutSlider?.maximumValue = constMaxValue   // default is 1.0
-        cutSlider?.outerTrackColor = .lightGray
-        cutSlider?.orientation = .horizontal
-        
-        cutSlider?.valueLabelPosition = .notAnAttribute // .notAnAttribute = don't show labels
-        cutSlider?.isValueLabelRelative = true // show differences between thumbs instead of absolute values
-        cutSlider?.valueLabelFormatter.positiveSuffix = ""
-        
-        cutSlider?.tintColor = UIColor.systemBlue // color of track
-        cutSlider?.trackWidth = 10
-        cutSlider?.hasRoundTrackEnds = true
-        cutSlider?.showsThumbImageShadow = false // wide tracks look better without thumb shadow
-        
-        cutSlider?.thumbImage   = UIImage(named: "balloon")
-        cutSlider?.minimumImage = UIImage(named: "clown")
-        cutSlider?.maximumImage = UIImage(named: "cloud")
-        
-        cutSlider?.disabledThumbIndices = []
-        
-        cutSlider?.snapStepSize = 0.0  // default is 0.0, i.e. don't snap
-
-        cutSlider?.value = [constMinValue, constMaxValue]
-
-        cutSlider?.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged) // continuous changes
-        cutSlider?.addTarget(self, action: #selector(sliderDragEnded(_:)), for: . touchUpInside) // sent when drag ends
-        
-        cutSlider?.translatesAutoresizingMaskIntoConstraints = false
-        guard let slider = cutSlider else { return }
-        cutView.addSubview(slider)
-        
-        NSLayoutConstraint.activate([
-            slider.bottomAnchor.constraint(equalTo: cutView.bottomAnchor),
-            slider.leadingAnchor.constraint(equalTo: cutView.leadingAnchor),
-            slider.trailingAnchor.constraint(equalTo: cutView.trailingAnchor)
-        ])
-        
-        let sendButton = UIButton()
-        sendButton.layer.borderColor = UIColor.black.cgColor
-        sendButton.layer.borderWidth = 1
-        sendButton.layer.cornerRadius = 5.0
-        sendButton.layer.masksToBounds = true
-        sendButton.backgroundColor = UIColor.systemBlue
-        sendButton.setTitle("Send", for: .normal)
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
-        cutView.addSubview(sendButton)
-        
-        NSLayoutConstraint.activate([
-            sendButton.trailingAnchor.constraint(equalTo: cutView.trailingAnchor, constant: -10),
-            sendButton.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
-            sendButton.widthAnchor.constraint(equalToConstant: 80),
-            sendButton.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
-        label1 = UILabel()
-        label1?.layer.borderColor = UIColor.black.cgColor
-        label1?.layer.borderWidth = 1
-        label1?.layer.cornerRadius = 5.0
-        label1?.layer.masksToBounds = true
-        label1?.backgroundColor = UIColor.white
-        label1?.textColor = UIColor.black
-        label1?.textAlignment = NSTextAlignment.center
-        label1?.text = "0"
-        label1?.translatesAutoresizingMaskIntoConstraints = false
-        guard let label1 = label1 else { return }
-        cutView.addSubview(label1)
-        
-        NSLayoutConstraint.activate([
-            label1.leadingAnchor.constraint(equalTo: cutView.leadingAnchor, constant: 10),
-            label1.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
-            label1.widthAnchor.constraint(equalToConstant: 100),
-            label1.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
-        label2 = UILabel()
-        label2?.layer.borderColor = UIColor.black.cgColor
-        label2?.layer.borderWidth = 1
-        label2?.layer.cornerRadius = 5.0
-        label2?.layer.masksToBounds = true
-        label2?.backgroundColor = UIColor.white
-        label2?.textColor = UIColor.black
-        label2?.textAlignment = NSTextAlignment.center
-        label2?.text = "0"
-        label2?.translatesAutoresizingMaskIntoConstraints = false
-        guard let label2 = label2 else { return }
-        cutView.addSubview(label2)
-        
-        NSLayoutConstraint.activate([
-            label2.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 10),
-            label2.topAnchor.constraint(equalTo: cutView.topAnchor, constant: 8),
-            label2.widthAnchor.constraint(equalToConstant: 100),
-            label2.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
         sliderValue?.first = Float(constMinValue)
         sliderValue?.last = Float(constMaxValue)
+        cutView.sendButton?.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
+        cutView.cutSlider?.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
+        cutView.cutSlider?.addTarget(self, action: #selector(sliderDragEnded(_:)), for: . touchUpInside)
     }
     
     @objc func sliderChanged(_ slider: MultiSlider) {
@@ -395,14 +310,14 @@ private extension VideoPlayer {
         print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
         guard let first = slider.value.first, let second = slider.value.last else { return }
         
-        let firstTime = createTime(Float(first)).seconds.rounded()
-        let secondTime = createTime(Float(second)).seconds.rounded()
-        let firstDisplayTime = secondsToHoursMinutesSeconds(Int(firstTime))
-        let secondDisplayTime = secondsToHoursMinutesSeconds(Int(secondTime))
-        label1?.text = firstDisplayTime
-        label2?.text = secondDisplayTime
-        sliderValue?.timeFirst = createTime(Float(first))
-        sliderValue?.timeSecond = createTime(Float(second))
+        let firstTime = helper.createTime(Float(first), time: asset.duration).seconds.rounded()
+        let secondTime = helper.createTime(Float(second), time: asset.duration).seconds.rounded()
+        let firstDisplayTime = helper.secondsToHoursMinutesSeconds(Int(firstTime))
+        let secondDisplayTime = helper.secondsToHoursMinutesSeconds(Int(secondTime))
+        cutView?.setLabel1(firstDisplayTime)
+        cutView?.setLabel2(secondDisplayTime)
+        sliderValue?.timeFirst = helper.createTime(Float(first), time: asset.duration)
+        sliderValue?.timeSecond = helper.createTime(Float(second), time: asset.duration)
         
         if sliderValue?.first != Float(first) {
             sliderValue?.first = Float(first)
@@ -415,7 +330,6 @@ private extension VideoPlayer {
     
     @objc func sliderDragEnded(_ slider: MultiSlider) {
         print("thumb \(slider.draggedThumbIndex) moved")
-        print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
         guard let first = slider.value.first, let second = slider.value.last else { return }
         
         sliderValue?.first = Float(first)
@@ -426,7 +340,7 @@ private extension VideoPlayer {
         isSeekInProgress = true
         isAutoPlay = false
         
-        let time = createTime(sliderValue)
+        let time = helper.createTime(sliderValue, time: asset.duration)
 
         player.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] _ in
             guard let `self` = self else { return }
@@ -435,62 +349,4 @@ private extension VideoPlayer {
             print("Player time after seeking: \(CMTimeGetSeconds(self.player.currentTime()))")
         }
     }
-    
-    private func createTime(_ sliderValue: Float) -> CMTime {
-        let duration = asset.duration
-        let durationTime = CMTimeGetSeconds(duration)
-        
-        let floatTime = Float(durationTime)
-        let newTime = floatTime / 100 * sliderValue
-        
-        return CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000)
-    }
-
-    func secondsToHoursMinutesSeconds(_ time: Int) -> String {
-        let seconds = (time % 3600) % 60
-        let minute = (time % 3600) / 60
-        let hours = time / 3600
-        var finelTime = "\(0)"
-        var secondStr = ""
-        var minuteStr = ""
-        
-        if seconds != 0 {
-            secondStr = "\(seconds)"
-        }
-        if minute != 0 && seconds > 0 && seconds < 10 {
-            secondStr = "0\(seconds)"
-        }
-        if minute != 0 && seconds == 0 {
-            secondStr = "00"
-        }
-        
-        if minute != 0 {
-            minuteStr = "\(minute)"
-        }
-        if hours != 0 && minute > 0 && minute < 10 {
-            minuteStr = "0\(minute)"
-        }
-        if hours != 0 && minute == 0 {
-            minuteStr = "00"
-        }
-        
-        if seconds != 0 {
-            finelTime = "\(secondStr)"
-        }
-        if minute != 0 {
-            finelTime = "\(minuteStr):\(secondStr)"
-        }
-        if hours != 0 {
-            finelTime = "\(hours):\(minuteStr):\(secondStr)"
-        }
-        return finelTime
-    }
-}
-
-
-struct SliderValue {
-    var first: Float
-    var last: Float
-    var timeFirst: CMTime?
-    var timeSecond: CMTime?
 }

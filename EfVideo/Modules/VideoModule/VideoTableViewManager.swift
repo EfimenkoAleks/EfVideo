@@ -1,24 +1,25 @@
 //
-//  ListTableViewManager.swift
+//  VideoTableViewManager.swift
 //  EfVideo
 //
-//  Created by user on 23.10.2022.
+//  Created by user on 17.12.2022.
 //
 
 import UIKit
+import Photos
 
-enum ListEvent {
+enum VideoEvent {
     case reload
     case selectedVideo(VideoModel)
 }
 
-class ListTableViewManager: NSObject {
+class VideoTableViewManager: NSObject {
     
     private var isLoadingList: Bool = false
     
     var tableView: UITableView
     var data: [VideoModel]
-    var eventHandler: ((ListEvent) -> Void)?
+    var eventHandler: ((VideoEvent) -> Void)?
     
     init(_ tableView: UITableView, data: [VideoModel]) {
         self.tableView = tableView
@@ -38,14 +39,14 @@ class ListTableViewManager: NSObject {
     }
 }
 
-extension ListTableViewManager {
+extension VideoTableViewManager {
     
     func registerTableViewCells() {
         tableView.register(ListVideoCell.nib, forCellReuseIdentifier: ConstantId.listVideoCell)
     }
 }
 
-extension ListTableViewManager: UITableViewDataSource {
+extension VideoTableViewManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -62,7 +63,7 @@ extension ListTableViewManager: UITableViewDataSource {
     }
 }
 
-extension ListTableViewManager: UITableViewDelegate {
+extension VideoTableViewManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if eventHandler != nil {
             eventHandler?(.selectedVideo(data[indexPath.row]))
