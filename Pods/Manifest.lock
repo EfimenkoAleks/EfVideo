@@ -1,26 +1,38 @@
 PODS:
+  - AvailableHapticFeedback (1.0.2)
+  - MultiSlider (1.13.2):
+    - AvailableHapticFeedback
+    - SweeterSwift
   - RxCocoa (6.0.0):
     - RxRelay (= 6.0.0)
     - RxSwift (= 6.0.0)
   - RxRelay (6.0.0):
     - RxSwift (= 6.0.0)
   - RxSwift (6.0.0)
+  - SweeterSwift (1.2.1)
 
 DEPENDENCIES:
+  - MultiSlider
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
   trunk:
+    - AvailableHapticFeedback
+    - MultiSlider
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SweeterSwift
 
 SPEC CHECKSUMS:
+  AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
+  MultiSlider: 66271d410330e63ded9e468d4ef420d5dbe31d2e
   RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
   RxRelay: 8d593be109c06ea850df027351beba614b012ffb
   RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  SweeterSwift: 61baeda1c0c27d1dc57c8112c3d6a82e5aff3139
 
-PODFILE CHECKSUM: 81dc31731150f3ad3c87d980f0c9eacc1f910d5d
+PODFILE CHECKSUM: b19522724651a50d808e478968cafdd741821596
 
 COCOAPODS: 1.11.3

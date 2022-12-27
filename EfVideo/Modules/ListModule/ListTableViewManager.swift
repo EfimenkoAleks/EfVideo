@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum EmployeeEvent {
+enum ListEvent {
     case reload
     case selectedVideo(VideoModel)
 }
@@ -18,7 +18,7 @@ class ListTableViewManager: NSObject {
     
     var tableView: UITableView
     var data: [VideoModel]
-    var eventHandler: ((EmployeeEvent) -> Void)?
+    var eventHandler: ((ListEvent) -> Void)?
     
     init(_ tableView: UITableView, data: [VideoModel]) {
         self.tableView = tableView

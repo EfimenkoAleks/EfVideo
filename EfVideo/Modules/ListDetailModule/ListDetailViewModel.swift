@@ -11,15 +11,12 @@ import RxCocoa
 import AVFoundation
 
 class ListDetailViewModel {
-    
- //   private var fetcher: ListApiProtocol
-//    private var _dataList: BehaviorSubject<[VideoModel]> = BehaviorSubject<[VideoModel]>(value: [])
+
     private var _loading: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: true)
     
     init() {
        
     }
-    
 }
 
 extension ListDetailViewModel: ListDetailViewModelOutputProtocol {

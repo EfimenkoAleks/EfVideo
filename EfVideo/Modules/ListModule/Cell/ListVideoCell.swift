@@ -26,7 +26,9 @@ class ListVideoCell: UITableViewCell, ReusableCell {
         guard let urlStr = model.sources?.first,
         let url = URL(string: urlStr) else { return }
         imageFromVideo(url: url, at: 3) { [weak self] imageOut in
-            self?.imageImageView.image = imageOut
+            DispatchQueue.main.async {
+                self?.imageImageView.image = imageOut
+            }
         }
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,35 +11,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoPlayer" customModule="EfVideo" customModuleProvider="target">
             <connections>
+                <outlet property="allContainerView" destination="l4T-ge-cT2" id="Do2-go-AV7"/>
                 <outlet property="backButton" destination="4BM-M4-jcp" id="4gi-yi-HDK"/>
+                <outlet property="containerCutSliderView" destination="nSi-7o-GTC" id="7SF-AH-rZL"/>
+                <outlet property="containerHeight" destination="M2g-us-Rcd" id="kLq-2A-FZF"/>
                 <outlet property="containerSliderView" destination="SKd-6D-SSn" id="mJF-L3-FoG"/>
                 <outlet property="forwardButton" destination="KCs-u0-6VQ" id="rHT-lr-9OG"/>
+                <outlet property="heightVideoView" destination="ZKZ-5R-AUX" id="GUd-oE-E26"/>
                 <outlet property="muteButton" destination="W62-zW-8Dp" id="coU-XM-EYo"/>
                 <outlet property="playButton" destination="1WG-Ed-his" id="C9A-4l-3jJ"/>
                 <outlet property="resizeButton" destination="gMg-rP-OcY" id="mE5-wr-7U3"/>
-                <outlet property="vwPlayer" destination="lDi-iJ-VG4" id="bi1-ex-vGI"/>
+                <outlet property="timeLabel" destination="vWc-G0-Q0M" id="iup-xN-dYX"/>
+                <outlet property="vwPlayer" destination="lDi-iJ-VG4" id="2DW-ls-Auf"/>
+                <outlet property="widthVideoView" destination="H7J-ar-nAz" id="WGE-V5-qgG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="379" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="379" height="537"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4T-ge-cT2">
-                    <rect key="frame" x="0.0" y="44" width="379" height="356"/>
+                    <rect key="frame" x="0.0" y="48" width="379" height="500"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-iJ-VG4">
-                            <rect key="frame" x="8" y="0.0" width="363" height="200"/>
+                            <rect key="frame" x="89.5" y="0.0" width="200" height="200"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="SyP-Kq-Jcg"/>
+                                <constraint firstAttribute="width" constant="200" id="H7J-ar-nAz"/>
+                                <constraint firstAttribute="height" constant="200" id="ZKZ-5R-AUX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-7o-GTC">
-                            <rect key="frame" x="0.0" y="256" width="379" height="100"/>
+                            <rect key="frame" x="0.0" y="220" width="379" height="130"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-Ed-his" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
-                                    <rect key="frame" x="169.5" y="44" width="40" height="40"/>
+                                    <rect key="frame" x="169.5" y="74" width="40" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="KfR-xc-cuE"/>
@@ -53,7 +60,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W62-zW-8Dp" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="44" width="40" height="40"/>
+                                    <rect key="frame" x="16" y="74" width="40" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="CTc-2V-IxS"/>
@@ -68,7 +75,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4BM-M4-jcp" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
-                                    <rect key="frame" x="113.5" y="44" width="40" height="40"/>
+                                    <rect key="frame" x="113.5" y="74" width="40" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="Nyf-9E-vJX"/>
@@ -83,7 +90,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCs-u0-6VQ" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
-                                    <rect key="frame" x="225.5" y="44" width="40" height="40"/>
+                                    <rect key="frame" x="225.5" y="74" width="40" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="HW3-71-V1y"/>
@@ -98,18 +105,18 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-rP-OcY" customClass="ControlButton" customModule="EfVideo" customModuleProvider="target">
-                                    <rect key="frame" x="323" y="44" width="40" height="40"/>
+                                    <rect key="frame" x="323" y="74" width="40" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="Gjo-N0-JeQ"/>
                                         <constraint firstAttribute="width" constant="40" id="rSs-F3-EGW"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="arrow.up.left.and.down.right.and.arrow.up.right.and.down.left" catalog="system">
+                                    <buttonConfiguration key="configuration" style="plain" image="crop" catalog="system">
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="didTapResizeButton:" destination="-1" eventType="touchUpInside" id="bEC-95-tJF"/>
+                                        <action selector="didTapCropButton:" destination="-1" eventType="touchUpInside" id="SUK-4w-3h9"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKd-6D-SSn">
@@ -119,15 +126,24 @@
                                         <constraint firstAttribute="height" constant="20" id="1qo-O8-ZOv"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWc-G0-Q0M">
+                                    <rect key="frame" x="348.5" y="28" width="10.5" height="21"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="vWc-G0-Q0M" secondAttribute="trailing" constant="20" id="0H9-5e-55p"/>
                                 <constraint firstItem="SKd-6D-SSn" firstAttribute="top" secondItem="nSi-7o-GTC" secondAttribute="top" id="0ry-Wd-7oU"/>
                                 <constraint firstItem="KCs-u0-6VQ" firstAttribute="leading" secondItem="1WG-Ed-his" secondAttribute="trailing" constant="16" id="2ri-Sr-iwx"/>
                                 <constraint firstItem="SKd-6D-SSn" firstAttribute="leading" secondItem="nSi-7o-GTC" secondAttribute="leading" id="8A0-FU-foC"/>
                                 <constraint firstItem="W62-zW-8Dp" firstAttribute="leading" secondItem="nSi-7o-GTC" secondAttribute="leading" constant="16" id="Nbi-sN-ZYe"/>
-                                <constraint firstAttribute="height" constant="100" id="SdR-vV-Xw3"/>
+                                <constraint firstAttribute="height" constant="130" id="SdR-vV-Xw3"/>
                                 <constraint firstItem="W62-zW-8Dp" firstAttribute="centerY" secondItem="1WG-Ed-his" secondAttribute="centerY" id="U7y-Ah-6o7"/>
+                                <constraint firstItem="vWc-G0-Q0M" firstAttribute="top" secondItem="SKd-6D-SSn" secondAttribute="bottom" constant="8" id="ZV2-Hi-1fa"/>
                                 <constraint firstAttribute="trailing" secondItem="gMg-rP-OcY" secondAttribute="trailing" constant="16" id="fqi-WD-95s"/>
                                 <constraint firstAttribute="bottom" secondItem="1WG-Ed-his" secondAttribute="bottom" constant="16" id="heK-mz-IYa"/>
                                 <constraint firstItem="KCs-u0-6VQ" firstAttribute="centerY" secondItem="1WG-Ed-his" secondAttribute="centerY" id="ho5-O8-mw6"/>
@@ -141,12 +157,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="nSi-7o-GTC" firstAttribute="leading" secondItem="l4T-ge-cT2" secondAttribute="leading" id="3GE-Nf-g2f"/>
-                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="leading" secondItem="l4T-ge-cT2" secondAttribute="leading" constant="8" id="8Au-4L-1xz"/>
-                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="top" secondItem="l4T-ge-cT2" secondAttribute="top" id="FRt-Yo-gvH"/>
-                        <constraint firstAttribute="trailing" secondItem="nSi-7o-GTC" secondAttribute="trailing" id="UTy-0O-yrO"/>
-                        <constraint firstAttribute="trailing" secondItem="lDi-iJ-VG4" secondAttribute="trailing" constant="8" id="eO5-LN-DT7"/>
-                        <constraint firstAttribute="bottom" secondItem="nSi-7o-GTC" secondAttribute="bottom" id="khg-5Y-qKP"/>
+                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="centerX" secondItem="l4T-ge-cT2" secondAttribute="centerX" id="5L9-FG-aD9"/>
+                        <constraint firstItem="nSi-7o-GTC" firstAttribute="leading" secondItem="l4T-ge-cT2" secondAttribute="leading" id="8k2-ml-Ph0"/>
+                        <constraint firstAttribute="bottom" secondItem="nSi-7o-GTC" secondAttribute="bottom" constant="150" id="C1M-HS-gpD"/>
+                        <constraint firstAttribute="height" constant="500" id="M2g-us-Rcd"/>
+                        <constraint firstAttribute="trailing" secondItem="nSi-7o-GTC" secondAttribute="trailing" id="n3t-rX-nQn"/>
+                        <constraint firstItem="lDi-iJ-VG4" firstAttribute="top" secondItem="l4T-ge-cT2" secondAttribute="top" id="uaB-YZ-tJ8"/>
                     </constraints>
                 </view>
             </subviews>
@@ -155,37 +171,35 @@
             <constraints>
                 <constraint firstItem="l4T-ge-cT2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="F9Q-hh-5TH"/>
                 <constraint firstAttribute="trailing" secondItem="l4T-ge-cT2" secondAttribute="trailing" id="HBs-Le-fsD"/>
-                <constraint firstItem="l4T-ge-cT2" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Vgh-YQ-23X"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="l4T-ge-cT2" secondAttribute="bottom" id="W5v-UI-jHk"/>
                 <constraint firstItem="l4T-ge-cT2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="g8G-aH-0ZI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="368.84057971014494" y="49.21875"/>
+            <point key="canvasLocation" x="368.84057971014494" y="94.754464285714278"/>
         </view>
     </objects>
     <designables>
         <designable name="1WG-Ed-his">
-            <size key="intrinsicContentSize" width="40" height="31"/>
+            <size key="intrinsicContentSize" width="43.5" height="34"/>
         </designable>
         <designable name="4BM-M4-jcp">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="KCs-u0-6VQ">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="W62-zW-8Dp">
-            <size key="intrinsicContentSize" width="42" height="31"/>
+            <size key="intrinsicContentSize" width="45.5" height="34"/>
         </designable>
         <designable name="gMg-rP-OcY">
-            <size key="intrinsicContentSize" width="46" height="31"/>
+            <size key="intrinsicContentSize" width="52.5" height="34"/>
         </designable>
     </designables>
     <resources>
-        <image name="arrow.up.left.and.down.right.and.arrow.up.right.and.down.left" catalog="system" width="128" height="115"/>
-        <image name="gobackward.15" catalog="system" width="121" height="128"/>
-        <image name="goforward.15" catalog="system" width="121" height="128"/>
-        <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="speaker.slash.fill" catalog="system" width="124" height="128"/>
+        <image name="crop" catalog="system" width="128" height="116"/>
+        <image name="gobackward.15" catalog="system" width="119" height="128"/>
+        <image name="goforward.15" catalog="system" width="119" height="128"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <image name="speaker.slash.fill" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
