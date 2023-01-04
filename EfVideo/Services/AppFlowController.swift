@@ -10,8 +10,8 @@ import UIKit
 class AppFlowController: UIViewController {
     
     private struct TabBarItemAppearance {
-        static var firstControllerTitle: String = "colection"
-        static var secondControllerTitle: String = "detail"
+        static var firstControllerTitle: String = "Server"
+        static var secondControllerTitle: String = "Phone"
         static var firstControllerImage: String = "tray"
         static var secondControllerImage: String = "book"
         static var firstSelectedControllerImage: String = "tray.fill"
