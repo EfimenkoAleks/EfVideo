@@ -62,7 +62,7 @@ private extension ListDetailViewController {
     }
     
     func shareVideo(_ url: URL) {
-        let activityItems: [Any] = [url, "Check this out!"]
+        let activityItems: [Any] = [url]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         
         activityController.popoverPresentationController?.sourceView = view

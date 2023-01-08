@@ -27,6 +27,37 @@ class PlayerHelper {
         let compositionVideoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
         let compositionAudioTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
         
+        let size = sourceVideoTrack.naturalSize
+        let txf = sourceVideoTrack.preferredTransform
+
+            var recordType = ""
+            if (size.width == txf.tx && size.height == txf.ty){
+             recordType = "UIInterfaceOrientationLandscapeRight"
+            }else if (txf.tx == 0 && txf.ty == 0){
+             recordType = "UIInterfaceOrientationLandscapeLeft"
+            }else if (txf.tx == 0 && txf.ty == size.width){
+             recordType = "UIInterfaceOrientationPortraitUpsideDown"
+            }else{
+            recordType = "UIInterfaceOrientationPortrait"
+          }
+        
+        if recordType == "UIInterfaceOrientationPortrait" {
+              let t1: CGAffineTransform = CGAffineTransform(translationX: sourceVideoTrack.naturalSize.height, y: -(sourceVideoTrack.naturalSize.width - sourceVideoTrack.naturalSize.height)/2)
+              let t2: CGAffineTransform = t1.rotated(by: CGFloat(Double.pi / 2))
+              let finalTransform: CGAffineTransform = t2
+            compositionVideoTrack?.preferredTransform = finalTransform
+            }else if recordType == "UIInterfaceOrientationLandscapeRight" {
+              let t1: CGAffineTransform = CGAffineTransform(translationX: sourceVideoTrack.naturalSize.height, y: -(sourceVideoTrack.naturalSize.width - sourceVideoTrack.naturalSize.height)/2)
+              let t2: CGAffineTransform = t1.rotated(by: -CGFloat(Double.pi))
+              let finalTransform: CGAffineTransform = t2
+                compositionVideoTrack?.preferredTransform = finalTransform
+            }else if recordType == "UIInterfaceOrientationPortraitUpsideDown" {
+              let t1: CGAffineTransform = CGAffineTransform(translationX: sourceVideoTrack.naturalSize.height, y: -(sourceVideoTrack.naturalSize.width - sourceVideoTrack.naturalSize.height)/2)
+              let t2: CGAffineTransform = t1.rotated(by: -CGFloat(Double.pi/2))
+              let finalTransform: CGAffineTransform = t2
+                compositionVideoTrack?.preferredTransform = finalTransform
+            }
+        
         do {
             try compositionVideoTrack?.insertTimeRange(CMTimeRangeMake(start: .zero, duration: asset.duration), of: sourceVideoTrack, at: .zero)
             try compositionAudioTrack?.insertTimeRange(CMTimeRangeMake(start: .zero, duration: asset.duration), of: sourceAudioTrack, at: .zero)
