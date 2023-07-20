@@ -39,7 +39,7 @@ private extension ListViewController {
         bindUI()
     }
     
-    func setupTable(_ data: [VideoModel]) {
+    func setupTable(_ data: [Videos]) {
         self.tableViewManager = ListTableViewManager(tableView, data: data)
         self.tableViewManager?.eventHandler = { [unowned self] event in
             self.showVideo(event)
@@ -58,7 +58,11 @@ private extension ListViewController {
         case .reload:
             break
         case .selectedVideo(let video):
-            coordinator?.eventOccurred(with: .detail(video))
+            coordinator?.eventOccurred(with: .detail(convertModel(model: video)))
         }
+    }
+    
+    func convertModel(model: Videos) -> VideoModel {
+        return VideoModel(description: model.url, sources: [model.videoFiles[0].link], subtitle: model.url, thumb: model.url, title: model.url)
     }
 }

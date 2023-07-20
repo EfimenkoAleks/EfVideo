@@ -68,7 +68,7 @@ class PlayerHelper {
         
         let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: composition)
         var preset = AVAssetExportPresetPassthrough
-        let preferredPreset = AVAssetExportPreset1280x720
+        let preferredPreset = AVAssetExportPresetHighestQuality
         if compatiblePresets.contains(preferredPreset) {
             preset = preferredPreset
         }
