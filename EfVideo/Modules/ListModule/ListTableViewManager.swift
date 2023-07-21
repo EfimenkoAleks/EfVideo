@@ -9,7 +9,7 @@ import UIKit
 
 enum ListEvent {
     case reload
-    case selectedVideo(VideoModel)
+    case selectedVideo(Videos)
 }
 
 class ListTableViewManager: NSObject {
@@ -17,10 +17,10 @@ class ListTableViewManager: NSObject {
     private var isLoadingList: Bool = false
     
     var tableView: UITableView
-    var data: [VideoModel]
+    var data: [Videos]
     var eventHandler: ((ListEvent) -> Void)?
     
-    init(_ tableView: UITableView, data: [VideoModel]) {
+    init(_ tableView: UITableView, data: [Videos]) {
         self.tableView = tableView
         self.data = data
         super.init()
@@ -32,7 +32,7 @@ class ListTableViewManager: NSObject {
         tableView.reloadData()
     }
     
-    func reloadTable(data: [VideoModel]) {
+    func reloadTable(data: [Videos]) {
         self.data = data
         tableView.reloadData()
     }

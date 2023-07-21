@@ -26,6 +26,12 @@
 		CE9D0C14295B9E1300BAA467 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D0C13295B9E1300BAA467 /* PHAsset+Extension.swift */; };
 		CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */; };
 		CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB810B3290D8C0500CB37EF /* ListHelper.swift */; };
+		CEC79C332A66F7C200DFC806 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C322A66F7C200DFC806 /* VideoModel.swift */; };
+		CEC79C352A67E6D200DFC806 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C342A67E6D200DFC806 /* NetworkService.swift */; };
+		CEC79C372A67E75A00DFC806 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C362A67E75A00DFC806 /* NetworkServiceProtocol.swift */; };
+		CEC79C392A67F55200DFC806 /* FecherListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C382A67F55200DFC806 /* FecherListVideo.swift */; };
+		CEC79C3B2A67FDD800DFC806 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C3A2A67FDD800DFC806 /* String+Extension.swift */; };
+		CEC79C3D2A67FE4A00DFC806 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC79C3C2A67FE4A00DFC806 /* URL+Extension.swift */; };
 		CECE67D929057C360051AA9C /* ListTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67D829057C360051AA9C /* ListTableViewManager.swift */; };
 		CECE67DC290585500051AA9C /* ConstantId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DB290585500051AA9C /* ConstantId.swift */; };
 		CECE67DE2905861C0051AA9C /* TableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */; };
@@ -33,9 +39,6 @@
 		CECE67E3290586620051AA9C /* ListVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECE67E1290586620051AA9C /* ListVideoCell.xib */; };
 		CECE67E7290592470051AA9C /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67E6290592470051AA9C /* ListViewModel.swift */; };
 		CECE67E9290595000051AA9C /* ListInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67E8290595000051AA9C /* ListInterfaces.swift */; };
-		CECE67EE29059B920051AA9C /* ListApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67ED29059B920051AA9C /* ListApiProtocol.swift */; };
-		CECE67F029059BE90051AA9C /* ListApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67EF29059BE90051AA9C /* ListApiImpl.swift */; };
-		CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F129059E090051AA9C /* FechrsContainer.swift */; };
 		CECE67F52905A12F0051AA9C /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F42905A12F0051AA9C /* ListModel.swift */; };
 		CECE67F72905A8170051AA9C /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F62905A8170051AA9C /* Data+Extension.swift */; };
 		CECE67F92905B9A80051AA9C /* NetWorkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE67F82905B9A80051AA9C /* NetWorkError.swift */; };
@@ -102,6 +105,12 @@
 		CE9D0C13295B9E1300BAA467 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
 		CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		CEB810B3290D8C0500CB37EF /* ListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHelper.swift; sourceTree = "<group>"; };
+		CEC79C322A66F7C200DFC806 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		CEC79C342A67E6D200DFC806 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CEC79C362A67E75A00DFC806 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		CEC79C382A67F55200DFC806 /* FecherListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FecherListVideo.swift; sourceTree = "<group>"; };
+		CEC79C3A2A67FDD800DFC806 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CEC79C3C2A67FE4A00DFC806 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		CECE67D829057C360051AA9C /* ListTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewManager.swift; sourceTree = "<group>"; };
 		CECE67DB290585500051AA9C /* ConstantId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantId.swift; sourceTree = "<group>"; };
 		CECE67DD2905861C0051AA9C /* TableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -109,9 +118,6 @@
 		CECE67E1290586620051AA9C /* ListVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListVideoCell.xib; sourceTree = "<group>"; };
 		CECE67E6290592470051AA9C /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CECE67E8290595000051AA9C /* ListInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInterfaces.swift; sourceTree = "<group>"; };
-		CECE67ED29059B920051AA9C /* ListApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApiProtocol.swift; sourceTree = "<group>"; };
-		CECE67EF29059BE90051AA9C /* ListApiImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApiImpl.swift; sourceTree = "<group>"; };
-		CECE67F129059E090051AA9C /* FechrsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechrsContainer.swift; sourceTree = "<group>"; };
 		CECE67F42905A12F0051AA9C /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		CECE67F62905A8170051AA9C /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		CECE67F82905B9A80051AA9C /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
@@ -234,7 +240,7 @@
 			children = (
 				CECE67EC29059B3A0051AA9C /* ServicesImpl */,
 				CECE67EB29059B1D0051AA9C /* ServicesProtocol */,
-				CECE67F129059E090051AA9C /* FechrsContainer.swift */,
+				CEC79C382A67F55200DFC806 /* FecherListVideo.swift */,
 				CECE67F82905B9A80051AA9C /* NetWorkError.swift */,
 			);
 			path = APIServices;
@@ -243,7 +249,7 @@
 		CECE67EB29059B1D0051AA9C /* ServicesProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				CECE67ED29059B920051AA9C /* ListApiProtocol.swift */,
+				CEC79C362A67E75A00DFC806 /* NetworkServiceProtocol.swift */,
 			);
 			path = ServicesProtocol;
 			sourceTree = "<group>";
@@ -251,7 +257,7 @@
 		CECE67EC29059B3A0051AA9C /* ServicesImpl */ = {
 			isa = PBXGroup;
 			children = (
-				CECE67EF29059BE90051AA9C /* ListApiImpl.swift */,
+				CEC79C342A67E6D200DFC806 /* NetworkService.swift */,
 			);
 			path = ServicesImpl;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				CECE67F42905A12F0051AA9C /* ListModel.swift */,
+				CEC79C322A66F7C200DFC806 /* VideoModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -395,6 +402,8 @@
 				CECE67F62905A8170051AA9C /* Data+Extension.swift */,
 				CEB810B1290D74F100CB37EF /* Reactive+Extension.swift */,
 				CE9D0C13295B9E1300BAA467 /* PHAsset+Extension.swift */,
+				CEC79C3A2A67FDD800DFC806 /* String+Extension.swift */,
+				CEC79C3C2A67FE4A00DFC806 /* URL+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -591,8 +600,6 @@
 			files = (
 				CECE67E7290592470051AA9C /* ListViewModel.swift in Sources */,
 				CEE09CB928F9611800EA1B60 /* AppDelegate.swift in Sources */,
-				CECE67F029059BE90051AA9C /* ListApiImpl.swift in Sources */,
-				CECE67F229059E090051AA9C /* FechrsContainer.swift in Sources */,
 				CEE09CFE28FC63EC00EA1B60 /* TabBarItem.swift in Sources */,
 				CEB810B4290D8C0500CB37EF /* ListHelper.swift in Sources */,
 				CE7421EA2916C4AB00C8A6EB /* ListDetailViewController.swift in Sources */,
@@ -603,13 +610,19 @@
 				CEB810B2290D74F100CB37EF /* Reactive+Extension.swift in Sources */,
 				CECE67E2290586620051AA9C /* ListVideoCell.swift in Sources */,
 				CEE09CF528FC0A0400EA1B60 /* ControlButton.swift in Sources */,
+				CEC79C3B2A67FDD800DFC806 /* String+Extension.swift in Sources */,
+				CEC79C372A67E75A00DFC806 /* NetworkServiceProtocol.swift in Sources */,
 				CEE09CFB28FC62DB00EA1B60 /* AppFlowController.swift in Sources */,
 				CEE09CC328F9611800EA1B60 /* EfVideo.xcdatamodeld in Sources */,
+				CEC79C332A66F7C200DFC806 /* VideoModel.swift in Sources */,
 				CE9D0C14295B9E1300BAA467 /* PHAsset+Extension.swift in Sources */,
 				CECE67DC290585500051AA9C /* ConstantId.swift in Sources */,
 				CE91E125294E45DA0013F4A7 /* VideoInterfaces.swift in Sources */,
+				CEC79C392A67F55200DFC806 /* FecherListVideo.swift in Sources */,
 				CE91E123294E45120013F4A7 /* VideoViewModel.swift in Sources */,
 				CE1C15832902EAA70099FA89 /* ListViewController.swift in Sources */,
+				CEC79C3D2A67FE4A00DFC806 /* URL+Extension.swift in Sources */,
+				CEC79C352A67E6D200DFC806 /* NetworkService.swift in Sources */,
 				CEE09CEF28F9CA9100EA1B60 /* VideoViewController.swift in Sources */,
 				CECE68012905CDDA0051AA9C /* mock_file.json in Sources */,
 				CE1C15862902F02B0099FA89 /* ListCoordinator.swift in Sources */,
@@ -617,7 +630,6 @@
 				CEE09D0228FC749000EA1B60 /* Coordinator.swift in Sources */,
 				CECE67E9290595000051AA9C /* ListInterfaces.swift in Sources */,
 				CEE09CF228FB173000EA1B60 /* BaseViewController.swift in Sources */,
-				CECE67EE29059B920051AA9C /* ListApiProtocol.swift in Sources */,
 				CE9D0C12295B813300BAA467 /* CutView.swift in Sources */,
 				CEE09D0528FC766B00EA1B60 /* MainCoordinator.swift in Sources */,
 				CECE67FF2905C87F0051AA9C /* DIContainer.swift in Sources */,

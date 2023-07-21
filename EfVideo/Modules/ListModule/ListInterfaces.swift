@@ -12,7 +12,7 @@ import RxCocoa
 protocol ListViewModelInputProtocol: AnyObject {}
 
 protocol ListViewModelOutputProtocol: AnyObject {
-    var dataList: Driver<[VideoModel]> { get }
+    var dataList: Driver<[Videos]> { get }
     var loading: Observable<Bool> { get }
 }
 

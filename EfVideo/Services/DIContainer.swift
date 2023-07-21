@@ -11,5 +11,5 @@ struct DIContainer {
 
     static var `default` = Self()
     
-    lazy var listService: ListApiProtocol = ListApiImpl()
+    lazy var listService: FecherListVideo = FecherListVideo()
 }

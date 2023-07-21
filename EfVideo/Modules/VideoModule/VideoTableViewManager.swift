@@ -58,7 +58,7 @@ extension VideoTableViewManager: UITableViewDataSource {
         
         let model = data[indexPath.row]
         
-        cell.configure(model: model)
+        cell.configureSecondModule(model: model)
         return cell
     }
 }
